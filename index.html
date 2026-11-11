@@ -339,10 +339,11 @@ dialog::backdrop{background:rgba(8,16,11,.7);backdrop-filter:blur(3px)}
         <label for="n-name">Teacher's name<input id="n-name" type="text" placeholder="e.g. Mrs. Kamala Devi"></label>
         <label for="n-school">School and town<input id="n-school" type="text" placeholder="e.g. Govt. HSS, Karur"></label>
         <label for="n-subject">Subject<select id="n-subject"></select></label>
-        <label for="n-you">Your name<input id="n-you" type="text" placeholder="So we can thank you"></label>
+        <label for="n-you">Your name<input id="n-you" type="text" placeholder="So we can thank you" autocomplete="name"></label>
+        <label class="full" for="n-phone">Your phone / WhatsApp<input id="n-phone" type="tel" inputmode="tel" placeholder="So we can tell you when their story goes live" autocomplete="tel"></label>
         <label class="full" for="n-story">What did they do for you?<textarea id="n-story" placeholder="She stayed back every evening to teach me algebra…"></textarea></label>
         <div class="notice" id="notice" hidden></div>
-        <div class="form-foot"><small>Demo form. Connect a real inbox before launch.</small><button class="btn btn-green" type="submit">Send nomination</button></div>
+        <div class="form-foot"><small>We only use your details to thank you and update you.</small><button class="btn btn-green" type="submit" id="nomBtn">Send nomination</button></div>
       </form>
     </div>
   </section>
@@ -499,13 +500,23 @@ $("#sort").addEventListener("change",e=>{state.sort=e.target.value;render();});
 document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));state.status=b.dataset.status;render();}));
 $("#subjects").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));state.subject=b.dataset.subject;render();});
 
-$("#nomForm").addEventListener("submit",e=>{
+// Nominations go to the same Google Apps Script as the teacher profile form (email + Nominations tab).
+const NOMINATE_URL="https://script.google.com/macros/s/AKfycbzQGABRx1B7rGtXAdL2ttWy8gHWV6Tl0bRdtZAcm7A7jh_mEnlYjOM-BKvN_qdCUlyegA/exec";
+$("#nomForm").addEventListener("submit",async e=>{
   e.preventDefault();
-  const name=$("#n-name").value.trim(),school=$("#n-school").value.trim(),n=$("#notice");
+  const v=id=>$("#"+id).value.trim(), name=v("n-name"), school=v("n-school"), n=$("#notice"), btn=$("#nomBtn");
   n.hidden=false;
   if(!name||!school){n.textContent="Add the teacher's name and their school and town, then send again.";return;}
-  n.textContent=`Thank you. Your nomination for ${name} is received. We'll be in touch before their story goes live.`;
-  e.target.reset();
+  btn.disabled=true;btn.textContent="Sending…";n.textContent="Sending your nomination…";
+  let ok=false;
+  try{
+    const r=await fetch(NOMINATE_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({type:"nomination",nomination:{teacher:name,school,subject:v("n-subject"),by:v("n-you"),phone:v("n-phone"),story:v("n-story")}})});
+    ok=!!(await r.json()).ok;
+  }catch{}
+  btn.disabled=false;btn.textContent="Send nomination";
+  if(ok){n.textContent=`Thank you. Your nomination for ${name} is received. We'll be in touch before their story goes live.`;e.target.reset();}
+  else n.textContent="Sorry, your nomination didn't go through. Please check your internet connection and try again.";
 });
 
 render();
