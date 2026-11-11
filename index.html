@@ -1,0 +1,515 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Classroom Legend</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Hind+Madurai:wght@400;500;600&display=swap">
+<style>
+/* Layout: deep-green award header (thesis + gold medallion) → Legend of the Week plaque → toolbar + medallion-card directory → process → partner plaque → nomination → footer. Theme taken from the gold-on-green logo. */
+:root{
+  --g-950:#0c1a12; --g-900:#11241a; --g-800:#152c1f; --g-700:#1e3b2b; --g-600:#2a4d39;
+  --gold-hi:#fde197; --gold:#d9b671; --gold-mid:#b8914a; --gold-lo:#8a6420;
+  --cream:#f4ecd6;
+  --bg:#f6f2e7; --surface:#fffdf7; --ink:#14231a; --muted:#56655a; --line:#e3d9bf;
+  --accent:#8a6420; --tint:#efe8d4;
+  --shadow:0 1px 2px rgba(20,35,26,.06),0 12px 30px rgba(20,35,26,.08);
+  --gold-grad:linear-gradient(135deg,#fde197 0%,#d9b671 38%,#a9813c 68%,#e9c97f 100%);
+  --f-engrave:"Cinzel","Trajan Pro",Georgia,serif;
+  --f-display:"Cormorant Garamond",Georgia,"Times New Roman",serif;
+  --f-body:"Hind Madurai","Noto Sans Tamil","Segoe UI",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0d1912; --surface:#14261c; --ink:#ede6d2; --muted:#a6b1a5; --line:#29402f; --accent:#d9b671; --tint:#1a2f22;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 30px rgba(0,0,0,.3); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0d1912; --surface:#14261c; --ink:#ede6d2; --muted:#a6b1a5; --line:#29402f; --accent:#d9b671; --tint:#1a2f22;
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 12px 30px rgba(0,0,0,.3); color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
+img{height:auto}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.eyebrow{font-family:var(--f-engrave);font-size:.74rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.ornament{display:flex;align-items:center;gap:12px;color:var(--gold)}
+.ornament::before,.ornament::after{content:"";height:1px;width:42px;background:currentColor;opacity:.7}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:13px 24px;font-weight:600;font-size:.95rem;text-decoration:none;cursor:pointer;border:1px solid transparent;transition:transform .15s ease,filter .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.btn-gold{background:var(--gold-grad);color:var(--g-950);box-shadow:0 6px 18px rgba(169,129,60,.35)}
+.btn-ghost{border-color:rgba(217,182,113,.55);color:var(--gold-hi)}
+.btn-ghost:hover{background:rgba(217,182,113,.1)}
+.btn-green{background:var(--g-800);color:var(--gold-hi);border-color:var(--gold-mid)}
+.gold-text{background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ---------- Header / hero ---------- */
+.board{background:radial-gradient(ellipse at 75% 40%,#1e3b2b 0%,#152c1f 45%,#0f2117 100%);color:var(--cream);position:relative;overflow:hidden}
+.board::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.05;background-image:radial-gradient(circle at 20% 30%,#fff 0 1px,transparent 1.6px),radial-gradient(circle at 70% 60%,#fff 0 1px,transparent 1.6px);background-size:23px 29px,41px 33px}
+.nav{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:16px;padding-block:18px;position:relative;z-index:2;border-bottom:1px solid rgba(217,182,113,.18)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand img{width:46px;height:46px;border-radius:50%;box-shadow:0 0 0 1px rgba(217,182,113,.4),0 4px 12px rgba(0,0,0,.35)}
+.brand-name{font-family:var(--f-engrave);font-size:1.05rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:28px;font-size:.92rem}
+.nav-links a:not(.btn){text-decoration:none;opacity:.8}
+.nav-links a:not(.btn):hover{opacity:1;color:var(--gold-hi)}
+.nav-links .btn{padding:9px 18px}
+.nav-left{justify-self:start}
+.nav-right{justify-self:end}
+.brand-center{position:relative;z-index:3;margin-bottom:-70px;align-self:start}
+.brand-center img{width:168px;height:168px;box-shadow:0 0 0 1px rgba(217,182,113,.45),0 16px 36px rgba(0,0,0,.5)}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-block:48px 80px;position:relative;z-index:1}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{font-size:clamp(2.6rem,6vw,4.6rem);margin-top:16px;color:var(--cream)}
+.hero h1 em{font-style:italic;font-weight:600}
+.hero-lead{margin-top:22px;max-width:48ch;font-size:1.1rem;color:#c9cfc2}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.stats{display:flex;flex-wrap:wrap;gap:36px;margin-top:42px;padding-top:24px;border-top:1px solid rgba(217,182,113,.2)}
+.stats b{display:block;font-family:var(--f-engrave);font-size:1.9rem;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}
+.stats span{font-size:.76rem;color:#aab3a6;letter-spacing:.12em;text-transform:uppercase}
+.medal{justify-self:center;position:relative;width:min(100%,500px);max-width:100%}
+.medal::before{content:"";position:absolute;left:18%;top:28%;width:42%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(253,225,151,.22) 0%,transparent 65%);pointer-events:none}
+.medal img{display:block;width:100%;position:relative;z-index:1}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ---------- Legend of the week ---------- */
+.lotw-band{background:linear-gradient(#0f2117,#0f2117) top/100% 50% no-repeat}
+.lotw{position:relative;top:-40px;background:var(--surface);border-radius:20px;padding:6px;background-image:var(--gold-grad);box-shadow:0 30px 60px rgba(12,26,18,.35)}
+.lotw-in{background:var(--g-800);color:var(--cream);border-radius:16px;padding:30px 34px;display:grid;grid-template-columns:auto 1fr auto;gap:28px;align-items:center}
+.lotw .eyebrow{color:var(--gold)}
+.lotw h3{font-size:2rem;color:var(--cream);margin-top:6px}
+.lotw .sub{color:#b9c1b4;font-size:.92rem;margin-top:4px}
+.lotw blockquote{margin:12px 0 0;font-family:var(--f-display);font-style:italic;font-size:1.35rem;line-height:1.35;color:var(--gold-hi)}
+.lotw .btn{white-space:nowrap}
+
+/* monogram medallion */
+.mono{flex:none;display:grid;place-items:center;border-radius:50%;background:var(--g-700);color:var(--gold-hi);font-family:var(--f-engrave);font-weight:600;letter-spacing:.04em;position:relative;box-shadow:inset 0 0 0 2px var(--g-950)}
+.mono::before{content:"";position:absolute;inset:-4px;border-radius:50%;padding:4px;background:var(--gold-grad);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+
+/* ---------- Directory ---------- */
+section{scroll-margin-top:90px}
+.section{padding-block:72px}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:30px}
+.sec-head h2{font-size:clamp(2rem,4vw,3rem);margin-top:8px}
+.sec-head p{color:var(--muted);max-width:46ch}
+
+.toolbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px;margin-bottom:24px;border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.tb-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.search{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:0 14px;color:var(--muted)}
+.search input{border:0;background:transparent;padding:11px 0;width:100%;outline:none;color:var(--ink)}
+.select{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--ink)}
+.seg{display:flex;background:var(--tint);border-radius:10px;padding:3px}
+.seg button{border:0;background:transparent;padding:8px 14px;border-radius:8px;cursor:pointer;font-size:.9rem;color:var(--muted);font-weight:500}
+.seg button[aria-pressed="true"]{background:var(--g-800);color:var(--gold-hi)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{border:1px solid var(--line);background:transparent;border-radius:999px;padding:5px 14px;font-size:.85rem;cursor:pointer;color:var(--muted)}
+.chip:hover{border-color:var(--gold-mid)}
+.chip[aria-pressed="true"]{background:var(--gold-grad);border-color:transparent;color:var(--g-950);font-weight:600}
+.result-line{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;margin-bottom:18px}
+.result-line em{font-style:normal;color:var(--accent)}
+
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;cursor:pointer;text-align:left;padding:0;transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow);border-color:var(--gold-mid)}
+.portrait{aspect-ratio:16/9;max-width:100%;background:radial-gradient(circle at 50% 45%,#1e3b2b 0%,#152c1f 55%,#0f2117 100%);position:relative;display:grid;place-items:center;overflow:hidden;border-bottom:3px solid transparent;border-image:var(--gold-grad) 1}
+.portrait .badge{position:absolute;left:14px;top:14px;font-family:var(--f-engrave);font-size:.64rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid rgba(217,182,113,.55);color:var(--gold-hi)}
+.portrait .badge.retired{background:var(--gold-grad);color:var(--g-950);border-color:transparent}
+.portrait .subj{position:absolute;right:14px;bottom:12px;font-size:.78rem;color:#c9cfc2;letter-spacing:.04em}
+.card-body{padding:20px 20px 18px;display:flex;flex-direction:column;gap:12px;flex:1}
+.card h3{font-size:1.5rem}
+.meta{color:var(--muted);font-size:.88rem;line-height:1.4}
+.prides{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:.93rem}
+.prides li{display:grid;grid-template-columns:16px 1fr;gap:10px;align-items:start}
+.prides svg{margin-top:4px}
+.card-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:auto;padding-top:14px;border-top:1px solid var(--line);font-size:.84rem;color:var(--muted)}
+.card-foot b{color:var(--ink);font-variant-numeric:tabular-nums;font-weight:600}
+.read{color:var(--accent);font-weight:600;white-space:nowrap}
+.empty{padding:56px 16px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:16px}
+.empty strong{display:block;font-family:var(--f-display);font-size:1.6rem;color:var(--ink);margin-bottom:4px}
+
+/* ---------- Process ---------- */
+.process{background:var(--surface);border-block:1px solid var(--line)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;counter-reset:s}
+.step{counter-increment:s;display:grid;gap:10px;justify-items:start}
+.step::before{content:counter(s,upper-roman);font-family:var(--f-engrave);font-size:1.1rem;font-weight:600;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:var(--g-800);color:var(--gold-hi);box-shadow:0 0 0 2px var(--gold-mid)}
+.step h3{font-size:1.5rem}
+.step p{color:var(--muted);font-size:.96rem}
+
+/* ---------- Partner ---------- */
+.partner{background:radial-gradient(ellipse at 20% 30%,#1e3b2b 0%,#152c1f 60%,#0f2117 100%);color:var(--cream);border-radius:22px;padding:52px;display:grid;grid-template-columns:1fr 1.1fr;gap:48px;align-items:center;border:1px solid rgba(217,182,113,.35)}
+.partner h2{font-size:clamp(1.9rem,3.6vw,2.8rem);margin-top:10px;color:var(--cream)}
+.partner p{color:#c3cabd;margin-top:14px;max-width:44ch}
+.partner .eyebrow{color:var(--gold)}
+.tiers{display:grid;gap:12px}
+.tier{display:grid;grid-template-columns:1fr auto;gap:4px 16px;padding:16px 18px;border:1px solid rgba(217,182,113,.25);border-radius:12px;background:rgba(253,225,151,.04)}
+.tier b{font-weight:600}
+.tier span{grid-column:1;font-size:.88rem;color:#b3bbae}
+.tier i{grid-row:1/3;grid-column:2;align-self:center;font-style:normal;font-family:var(--f-engrave);font-size:.95rem;font-weight:600;color:var(--gold-hi);white-space:nowrap}
+
+/* ---------- Nominate ---------- */
+.nominate{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:start}
+.nominate h2{font-size:clamp(2rem,4vw,3rem);margin-top:8px}
+.nominate .lead{color:var(--muted);margin-top:14px;max-width:42ch}
+.promise{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:10px;font-size:.95rem}
+.promise li{display:flex;gap:10px;align-items:start}
+.promise svg{flex:none;margin-top:4px}
+form{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;display:grid;grid-template-columns:1fr 1fr;gap:16px;box-shadow:var(--shadow);border-top:4px solid var(--gold-mid)}
+form label{display:grid;gap:6px;font-size:.85rem;font-weight:500;color:var(--ink);min-width:0}
+form .full{grid-column:1/-1}
+form input,form select,form textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 14px;color:var(--ink);font-weight:400}
+form input:focus,form select:focus,form textarea:focus{outline:none;border-color:var(--gold-mid);box-shadow:0 0 0 3px rgba(217,182,113,.25)}
+form textarea{min-height:120px;resize:vertical}
+.form-foot{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.form-foot small{color:var(--muted)}
+.notice{grid-column:1/-1;padding:12px 14px;border-radius:10px;font-size:.92rem;background:var(--tint);color:var(--ink)}
+
+/* ---------- Footer ---------- */
+footer{background:var(--g-900);color:var(--cream);margin-top:80px;border-top:3px solid transparent;border-image:var(--gold-grad) 1}
+.foot{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;padding-block:56px 32px}
+.foot p{color:#aab3a6;margin-top:14px;max-width:36ch;font-size:.92rem}
+.foot h4{margin:0 0 12px;font-family:var(--f-engrave);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:.93rem;color:#d3d8cc}
+.foot a{text-decoration:none}
+.foot a:hover{color:var(--gold-hi)}
+.foot-base{border-top:1px solid rgba(217,182,113,.18);padding-block:18px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:.82rem;color:#8f9a8d}
+
+/* ---------- Story sheet ---------- */
+dialog{border:0;padding:0;width:min(820px,calc(100vw - 24px));max-height:calc(100dvh - 24px);border-radius:20px;background:var(--surface);color:var(--ink);box-shadow:0 40px 100px rgba(0,0,0,.45)}
+dialog::backdrop{background:rgba(8,16,11,.7);backdrop-filter:blur(3px)}
+.sh-head{background:radial-gradient(ellipse at 80% 20%,#1e3b2b 0%,#152c1f 60%,#0f2117 100%);color:var(--cream);padding:34px 32px 28px;display:flex;gap:22px;align-items:center;position:relative;border-bottom:3px solid transparent;border-image:var(--gold-grad) 1}
+.sh-head .eyebrow{color:var(--gold)}
+.sh-head h2{font-size:clamp(1.8rem,4vw,2.5rem);margin-top:4px;color:var(--cream)}
+.sh-head .meta{color:#c3cabd;margin-top:4px}
+.close{position:absolute;top:14px;right:14px;border:1px solid rgba(217,182,113,.4);background:transparent;color:var(--gold-hi);font-size:1.1rem;cursor:pointer;width:38px;height:38px;border-radius:50%;line-height:1}
+.close:hover{background:rgba(217,182,113,.12)}
+.sh-body{padding:32px;display:grid;gap:30px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.fact{padding:16px 18px}
+.fact+.fact{border-left:1px solid var(--line)}
+.fact b{display:block;font-family:var(--f-engrave);font-size:1.5rem;font-weight:600;line-height:1.15;font-variant-numeric:tabular-nums;color:var(--accent)}
+.fact span{font-size:.8rem;color:var(--muted)}
+.sh-body h4{margin:0 0 10px;font-family:var(--f-engrave);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.story{font-family:var(--f-display);font-size:1.32rem;font-weight:500;line-height:1.6;max-width:62ch}
+.lesson{background:var(--g-800);color:var(--cream);border-radius:14px;padding:24px 26px;text-align:center;border:1px solid var(--gold-mid)}
+.lesson h4{color:var(--gold)}
+.lesson p{font-family:var(--f-display);font-style:italic;font-size:1.7rem;line-height:1.3;color:var(--gold-hi)}
+.testimonial{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+.testimonial .q{font-family:var(--f-display);font-size:4rem;line-height:.75;color:var(--gold-mid)}
+.testimonial p{font-size:1.05rem}
+.testimonial cite{display:block;margin-top:8px;font-style:normal;font-size:.88rem;color:var(--muted)}
+.sh-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-top:20px;border-top:1px solid var(--line);font-size:.88rem;color:var(--muted)}
+.sh-foot b{color:var(--ink)}
+.copy{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:9px 16px;cursor:pointer;font-weight:500;font-size:.88rem}
+.copy:hover{border-color:var(--gold-mid)}
+
+@media (max-width:980px){
+  .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .hero{grid-template-columns:1fr;gap:20px;padding-block:32px 72px}
+  .medal{width:min(100%,340px);grid-row:1}
+  .partner,.nominate{grid-template-columns:1fr}
+  .lotw-in{grid-template-columns:auto 1fr}
+  .lotw-in .btn{grid-column:1/-1;justify-self:start}
+}
+@media (max-width:680px){
+  .nav-links a:not(.btn){display:none}
+  .nav-right .btn{display:none}
+  .brand-center{margin-bottom:-46px}
+  .brand-center img{width:116px;height:116px}
+  .brand-name{font-size:.88rem;letter-spacing:.1em}
+  .grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr;gap:28px}
+  .section{padding-block:56px}
+  .partner{padding:30px 22px}
+  form{grid-template-columns:1fr;padding:20px}
+  .foot{grid-template-columns:1fr;gap:28px}
+  .lotw-in{grid-template-columns:1fr;padding:24px 22px;gap:16px}
+  .sh-head{padding:28px 22px 22px;flex-direction:column;align-items:flex-start}
+  .sh-body{padding:22px;gap:24px}
+  .fact{padding:12px}
+  .fact b{font-size:1.15rem}
+  .stats{gap:24px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header class="board">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <div class="nav-links nav-left"><a href="#legends">The Legends</a><a href="#how">How it works</a></div>
+      <a class="brand brand-center" href="#top"><img src="logo-560.png" alt="" width="168" height="168"><span class="sr-only">Classroom Legend home</span></a>
+      <div class="nav-links nav-right"><a href="#partner">Partner with us</a><a class="btn btn-gold" href="#nominate">Nominate a teacher</a></div>
+    </nav>
+
+    <div class="hero" id="top">
+      <div>
+        <div class="ornament eyebrow">Honouring our teachers</div>
+        <h1>The hands that <em class="gold-text">shaped</em> who we became</h1>
+        <p class="hero-lead">Real stories of Tamil Nadu's teachers who stayed late, cycled the extra mile, and carved a future out of every child they taught.</p>
+        <div class="hero-cta">
+          <a class="btn btn-gold" href="#legends">Meet the legends</a>
+          <a class="btn btn-ghost" href="#nominate">Nominate your teacher</a>
+        </div>
+        <div class="stats" id="stats"></div>
+      </div>
+      <div class="medal"><img src="hero-sculpture.webp" alt="Gold sculpture of a teacher's hand placing a glowing star into a child's open hand" width="900" height="1022"></div>
+    </div>
+  </div>
+</header>
+
+<div class="lotw-band"><div class="wrap"><aside class="lotw" id="feature" aria-label="Legend of the week"></aside></div></div>
+
+<main>
+  <section class="section" id="legends" style="padding-top:24px">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><div class="eyebrow">The Legends</div><h2>Every hero had a teacher</h2></div>
+        <p>Search by name, school or town, or browse by district and subject. Tap any teacher to read their full story.</p>
+      </div>
+
+      <div class="toolbar">
+        <div class="tb-row">
+          <label class="search" for="q">
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="q" type="search" placeholder="Search teacher, school or town" autocomplete="off">
+          </label>
+          <select class="select" id="district" aria-label="District"><option value="">All districts</option></select>
+          <div class="seg" role="group" aria-label="Status">
+            <button type="button" data-status="" aria-pressed="true">All</button>
+            <button type="button" data-status="serving" aria-pressed="false">Serving</button>
+            <button type="button" data-status="retired" aria-pressed="false">Retired</button>
+          </div>
+          <select class="select" id="sort" aria-label="Sort by"><option value="years">Longest service</option><option value="students">Most students guided</option><option value="name">Name A–Z</option></select>
+        </div>
+        <div class="chips" id="subjects" role="group" aria-label="Subject"></div>
+      </div>
+
+      <div class="result-line"><span id="count"></span><em>Sample profiles shown. Replace with your verified legends.</em></div>
+      <div class="grid" id="grid"></div>
+      <div class="empty" id="empty" hidden><strong>No legend matches yet</strong>Try another district or subject, or nominate the teacher you have in mind.</div>
+    </div>
+  </section>
+
+  <section class="section process" id="how">
+    <div class="wrap">
+      <div class="sec-head"><div><div class="eyebrow">How it works</div><h2>From a memory to a tribute</h2></div></div>
+      <div class="steps">
+        <div class="step"><h3>You nominate</h3><p>Former students, parents or colleagues tell us about a teacher who changed lives.</p></div>
+        <div class="step"><h3>We meet the teacher</h3><p>We take their consent, interview them and their students, and verify every detail.</p></div>
+        <div class="step"><h3>Their story is shared</h3><p>The tribute is published here and on Instagram and Facebook for the whole town to celebrate.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="partner">
+    <div class="wrap">
+      <div class="partner">
+        <div>
+          <div class="eyebrow">Partner with us</div>
+          <h2>Be the business that said thank you</h2>
+          <p>Ads get scrolled past. Tributes get saved, shared and remembered. Stand beside the teachers your community loves.</p>
+          <div style="margin-top:26px"><a class="btn btn-gold" href="partner/">See partner packages</a></div>
+        </div>
+        <div class="tiers">
+          <div class="tier"><b>Single post</b><span>Your ad on one teacher's honour post</span><i>Rs. 500</i></div>
+          <div class="tier"><b>Gold Partner</b><span>10 posts a month plus a dedicated thank-you post</span><i>Rs. 5,000</i></div>
+          <div class="tier"><b>Diamond Partner</b><span>20 posts a month, a thank-you post and a one-page website</span><i>Rs. 10,000</i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="nominate" style="padding-top:0">
+    <div class="wrap nominate">
+      <div>
+        <div class="eyebrow">Nominate</div>
+        <h2>Who shaped you?</h2>
+        <p class="lead">Tell us about the teacher who changed your life. It takes two minutes, and it could be the thank-you they never got.</p>
+        <ul class="promise">
+          <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.3l7.1-.7z" fill="var(--gold-mid)"/></svg>We always take the teacher's consent before publishing</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.3l7.1-.7z" fill="var(--gold-mid)"/></svg>Featuring a teacher is always free</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.3l7.1-.7z" fill="var(--gold-mid)"/></svg>We'll let you know when their story goes live</li>
+        </ul>
+      </div>
+      <form id="nomForm" novalidate>
+        <label for="n-name">Teacher's name<input id="n-name" type="text" placeholder="e.g. Mrs. Kamala Devi"></label>
+        <label for="n-school">School and town<input id="n-school" type="text" placeholder="e.g. Govt. HSS, Karur"></label>
+        <label for="n-subject">Subject<select id="n-subject"></select></label>
+        <label for="n-you">Your name<input id="n-you" type="text" placeholder="So we can thank you"></label>
+        <label class="full" for="n-story">What did they do for you?<textarea id="n-story" placeholder="She stayed back every evening to teach me algebra…"></textarea></label>
+        <div class="notice" id="notice" hidden></div>
+        <div class="form-foot"><small>Demo form. Connect a real inbox before launch.</small><button class="btn btn-green" type="submit">Send nomination</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a class="brand" href="#top"><img src="logo-160.png" alt="" width="46" height="46"><span class="brand-name">Classroom Legend</span></a>
+        <p>Honouring the teachers who shaped Tamil Nadu, one town at a time.</p>
+      </div>
+      <div><h4>Explore</h4><ul><li><a href="#legends">The Legends</a></li><li><a href="#how">How it works</a></li><li><a href="#partner">Partner with us</a></li><li><a href="#nominate">Nominate</a></li></ul></div>
+      <div><h4>Follow</h4><ul><li>Instagram · @classroomlegend</li><li>Facebook · Classroom Legend</li><li>#ThankYouTeacher</li></ul></div>
+    </div>
+    <div class="foot-base"><span>© 2026 Classroom Legend</span><span>Every hero had a teacher.</span></div>
+  </div>
+</footer>
+
+<dialog id="sheet" aria-labelledby="sheet-name"><div id="sheet-inner"></div></dialog>
+
+<script>
+const TEACHERS = [
+ {id:"subramanian",name:"Mr. R. Subramanian",init:"RS",subject:"Mathematics",school:"Govt. Higher Secondary School",town:"Thiruvarur",district:"Thiruvarur",from:1984,to:2022,status:"retired",students:1800,featured:true,
+  prides:["Cycled 6 km to school daily for 38 years","Free evening classes for students who couldn't afford tuition","40+ former students now doctors and engineers"],
+  story:"He never owned a car. Rain or shine, he cycled six kilometres to school and stayed back every evening for any child who needed help with sums. He kept a notebook of every student who struggled, and checked on each one until they passed.",
+  lesson:"Don't be afraid of the problem. Be curious about it.",
+  quote:{text:"He was patient with all of us, even the ones nobody else was patient with.",by:"Dr. Priya K.",role:"Cardiologist, Chennai"},sponsor:"Sri Lakshmi Book Centre"},
+ {id:"kamala",name:"Mrs. Kamala Devi",init:"KD",subject:"Tamil",school:"Panchayat Union Middle School",town:"Kallakurichi",district:"Kallakurichi",from:1991,to:null,status:"serving",students:1200,
+  prides:["Started a village library with 2,000 donated books","Taught 300+ adults to read and write","State Best Teacher Award nominee"],
+  story:"When she arrived, the village had no library. She collected books door to door, lined them up in her classroom, and opened it every Sunday. Today grandmothers borrow books alongside their grandchildren.",
+  lesson:"A book in your hand is a door that nobody can lock.",
+  quote:{text:"She taught my mother to sign her name. Then she taught me to write poetry.",by:"Anitha R.",role:"Tamil lecturer, Villupuram"},sponsor:"Annai Opticals"},
+ {id:"joseph",name:"Mr. A. Joseph Raj",init:"JR",subject:"Physical Education",school:"St. Xavier's Hr. Sec. School",town:"Tirunelveli",district:"Tirunelveli",from:1988,to:2021,status:"retired",students:2600,
+  prides:["Coached 85 students to state-level athletics","Built the school's running track by hand with students","Trained 6 national-level kabaddi players"],
+  story:"The school had no ground worth the name, so he and his students levelled one with shovels over two summers. He woke at 5 every morning to coach, and paid for many children's running shoes from his own salary.",
+  lesson:"Your legs will quit long before your heart does. Listen to your heart.",
+  quote:{text:"I ran barefoot until Sir bought me shoes. I never told anyone that until now.",by:"Muthu Kumar S.",role:"Sub-Inspector, Tamil Nadu Police"},sponsor:"Velan Sports"},
+ {id:"fathima",name:"Mrs. S. Fathima Beevi",init:"FB",subject:"Science",school:"Govt. Girls Hr. Sec. School",town:"Melapalayam",district:"Tirunelveli",from:2003,to:null,status:"serving",students:520,
+  prides:["Built a science lab from waste materials","Students won 4 district science exhibitions","Mentors girls for engineering entrance exams"],
+  story:"With no lab budget, she turned bottles, cardboard and old torch batteries into working models. Her girls have taken the district science exhibition four years running, and many are the first in their families at college.",
+  lesson:"Ask 'why' until someone gets tired. Then find the answer yourself.",
+  quote:{text:"She made us believe girls from our street could build bridges, literally.",by:"Sameena A.",role:"Civil Engineer, Coimbatore"},sponsor:"Fresh Mart Supermarket"},
+ {id:"venkatesan",name:"Mr. K. Venkatesan",init:"KV",subject:"English",school:"Municipal Hr. Sec. School",town:"Madurai",district:"Madurai",from:1979,to:2016,status:"retired",students:3000,
+  prides:["37 years of service in one school","Ran a free spoken-English club every Saturday","Students now serving in IAS and IPS"],
+  story:"For thirty-seven years he taught in the same classroom on the same street. Every Saturday he held a free spoken-English club under the neem tree, where shy first-generation learners practised until they could speak without fear.",
+  lesson:"Mistakes are just practice wearing a frown. Smile and speak again.",
+  quote:{text:"My interview board asked where I learnt English. I said: under a neem tree in Madurai.",by:"V. Karthikeyan",role:"Civil servant"},sponsor:"Meenakshi Coaching Centre"},
+ {id:"lakshmi",name:"Mrs. P. Lakshmi",init:"PL",subject:"Primary",school:"Govt. Primary School",town:"Kodaikanal Hills",district:"Dindigul",from:1998,to:null,status:"serving",students:650,
+  prides:["Walks 4 km uphill to a one-teacher school","Zero dropouts in her class for 10 years","Visits every absent child's home personally"],
+  story:"She is the only teacher at a hill school reached by a forest path. When a child is absent, she walks to their home that same evening. In ten years, not one child from her class has left school.",
+  lesson:"Come to school even on a sad day. School will make the day better.",
+  quote:{text:"Teacher came to our house in the rain to bring me back. I'm now finishing nursing.",by:"Selvi M.",role:"Nursing student, Madurai"},sponsor:"Hill View Medicals"},
+ {id:"natarajan",name:"Mr. S. Natarajan",init:"SN",subject:"Mathematics",school:"Kendriya Vidyalaya",town:"Coimbatore",district:"Coimbatore",from:1993,to:2023,status:"retired",students:2400,
+  prides:["Created a maths-through-cricket teaching method","Students topped the state board twice","Wrote free practice books still used today"],
+  story:"He explained averages with batting scores and probability with the toss. Boys who hated maths started arguing about run rates. His handwritten practice books are still photocopied by students across the district.",
+  lesson:"Every number is telling you a story. Learn to listen.",
+  quote:{text:"I still hear him: 'Required run rate, boys! Solve it before the over ends!'",by:"Arjun N.",role:"Data scientist, Bengaluru"},sponsor:"Kovai Stationery Mart"},
+ {id:"mary",name:"Sr. Mary Celine",init:"MC",subject:"Music",school:"Holy Cross Convent",town:"Thoothukudi",district:"Thoothukudi",from:1985,to:2019,status:"retired",students:900,
+  prides:["Founded a choir that sang at state functions","Taught music free to fishermen's children","34 years of service"],
+  story:"She opened the music room to children from the fishing villages, who had never touched a keyboard. Her choir went on to sing at state functions, with boys who once mended nets with their fathers singing lead.",
+  lesson:"Your voice is your own. Never let anyone make you whisper.",
+  quote:{text:"She heard a voice in me before I knew I had one.",by:"Jebaraj P.",role:"Playback singer, Chennai"},sponsor:"Pearl City Jewellers"},
+ {id:"ganesan",name:"Mr. M. Ganesan",init:"MG",subject:"Agriculture",school:"Govt. Hr. Sec. School",town:"Thanjavur",district:"Thanjavur",from:2006,to:null,status:"serving",students:410,
+  prides:["Turned the school ground into an organic farm","Students sell produce to fund their own trips","Trained 60 student farmers"],
+  story:"He believes the delta's children should be proud of the soil. His students grow paddy, greens and bananas on school land, keep the accounts, and use the earnings for their study tours.",
+  lesson:"The soil gives back exactly what you give it. So does life.",
+  quote:{text:"Sir made farming feel like science, not something to escape from.",by:"Ramesh T.",role:"Agri-startup founder, Thanjavur"},sponsor:"Delta Agro Services"}
+];
+
+const $ = s => document.querySelector(s);
+const state = {q:"",district:"",status:"",subject:"",sort:"years"};
+const years = t => (t.to || 2026) - t.from;
+const span = t => t.to ? `${t.from}–${t.to}` : `Since ${t.from}`;
+const fmt = n => n.toLocaleString("en-IN");
+const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const STAR = `<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.6 7.1.7-5.4 4.7 1.6 7L12 17.3 5.8 21l1.6-7L2 9.3l7.1-.7z" fill="var(--gold-mid)"/></svg>`;
+const mono = (t,size) => `<div class="mono" style="width:${size}px;height:${size}px;font-size:${Math.round(size*.32)}px">${esc(t.init)}</div>`;
+
+// filters
+const districts=[...new Set(TEACHERS.map(t=>t.district))].sort();
+$("#district").insertAdjacentHTML("beforeend",districts.map(d=>`<option>${esc(d)}</option>`).join(""));
+const subjects=[...new Set(TEACHERS.map(t=>t.subject))].sort();
+$("#subjects").innerHTML=`<button type="button" class="chip" data-subject="" aria-pressed="true">All subjects</button>`+subjects.map(s=>`<button type="button" class="chip" data-subject="${esc(s)}" aria-pressed="false">${esc(s)}</button>`).join("");
+$("#n-subject").innerHTML=subjects.concat(["Other"]).map(s=>`<option>${esc(s)}</option>`).join("");
+
+// stats
+const totalYears=TEACHERS.reduce((a,t)=>a+years(t),0), totalStudents=TEACHERS.reduce((a,t)=>a+t.students,0);
+$("#stats").innerHTML=`<div><b class="gold-text">${TEACHERS.length}</b><span>Legends</span></div><div><b class="gold-text">${totalYears}</b><span>Years of teaching</span></div><div><b class="gold-text">${fmt(totalStudents)}+</b><span>Students guided</span></div><div><b class="gold-text">${districts.length}</b><span>Districts</span></div>`;
+
+// legend of the week
+const f=TEACHERS.find(t=>t.featured);
+$("#feature").innerHTML=`<div class="lotw-in">
+  ${mono(f,92)}
+  <div style="min-width:0"><div class="eyebrow">Legend of the week</div><h3>${esc(f.name)}</h3><div class="sub">${esc(f.subject)} · ${esc(f.school)}, ${esc(f.town)} · ${span(f)}</div><blockquote>“${esc(f.lesson)}”</blockquote></div>
+  <button type="button" class="btn btn-gold" data-open="${f.id}">Read his story</button></div>`;
+
+function render(){
+  const q=state.q.trim().toLowerCase();
+  const list=TEACHERS.filter(t=>(!q||[t.name,t.school,t.town,t.district,t.subject].join(" ").toLowerCase().includes(q))&&(!state.district||t.district===state.district)&&(!state.status||t.status===state.status)&&(!state.subject||t.subject===state.subject))
+    .sort((a,b)=>state.sort==="name"?a.name.replace(/^\S+\s/,"").localeCompare(b.name.replace(/^\S+\s/,"")):state.sort==="students"?b.students-a.students:years(b)-years(a));
+  $("#count").textContent=`Showing ${list.length} of ${TEACHERS.length} legends`;
+  $("#empty").hidden=list.length>0;
+  $("#grid").innerHTML=list.map(t=>`
+    <button type="button" class="card" data-open="${t.id}" aria-label="Read ${esc(t.name)}'s story">
+      <div class="portrait">
+        <span class="badge ${t.status}">${t.status==="retired"?"Retired":"Serving"}</span>
+        ${mono(t,84)}
+        <span class="subj">${esc(t.subject)}</span>
+      </div>
+      <div class="card-body">
+        <div><h3>${esc(t.name)}</h3><div class="meta">${esc(t.school)}, ${esc(t.town)} · ${span(t)}</div></div>
+        <ul class="prides">${t.prides.map(p=>`<li>${STAR}<span>${esc(p)}</span></li>`).join("")}</ul>
+        <div class="card-foot"><span><b>${years(t)}</b> yrs · <b>${fmt(t.students)}</b> students</span><span class="read">Read story →</span></div>
+      </div>
+    </button>`).join("");
+}
+
+function openSheet(id){
+  const t=TEACHERS.find(x=>x.id===id); if(!t) return;
+  $("#sheet-inner").innerHTML=`
+    <div class="sh-head">
+      ${mono(t,84)}
+      <div><div class="eyebrow">${esc(t.subject)} · ${t.status==="retired"?"Retired":"Serving"}</div><h2 id="sheet-name">${esc(t.name)}</h2><div class="meta">${esc(t.school)}, ${esc(t.town)} · ${span(t)}</div></div>
+      <button class="close" type="button" aria-label="Close story" id="closeBtn">✕</button>
+    </div>
+    <div class="sh-body">
+      <div class="facts">
+        <div class="fact"><b>${years(t)}</b><span>Years of service</span></div>
+        <div class="fact"><b>${fmt(t.students)}</b><span>Students guided</span></div>
+        <div class="fact"><b>${esc(t.district)}</b><span>District</span></div>
+      </div>
+      <div><h4>Their story</h4><p class="story">${esc(t.story)}</p></div>
+      <div><h4>Their prides</h4><ul class="prides">${t.prides.map(p=>`<li>${STAR}<span>${esc(p)}</span></li>`).join("")}</ul></div>
+      <div class="lesson"><h4>The lesson they never stopped teaching</h4><p>“${esc(t.lesson)}”</p></div>
+      <div class="testimonial"><span class="q" aria-hidden="true">“</span><div><p>${esc(t.quote.text)}</p><cite>${esc(t.quote.by)} · ${esc(t.quote.role)}</cite></div></div>
+      <div class="sh-foot"><span>Proudly supported by <b>${esc(t.sponsor)}</b></span><button class="copy" type="button" id="copyBtn">Copy Instagram caption</button></div>
+    </div>`;
+  const d=$("#sheet"); if(!d.open) d.showModal();
+  $("#closeBtn").onclick=()=>d.close();
+  $("#copyBtn").onclick=async e=>{
+    const cap=`${t.story}\n\n“${t.lesson}”\n\n${t.name}, ${t.town}'s #ClassroomLegend ⭐\n\n👇 Tag a student of theirs, or tell us about YOUR legend.\n\nProudly supported by ${t.sponsor}\n\n#ClassroomLegend #ThankYouTeacher #${t.district.replace(/\s/g,"")}`;
+    try{await navigator.clipboard.writeText(cap);e.target.textContent="Caption copied";}catch{e.target.textContent="Copy blocked. Select the story text instead";}
+  };
+  try{history.replaceState(null,"","#"+t.id);}catch{}
+}
+
+document.addEventListener("click",e=>{const o=e.target.closest("[data-open]"); if(o) openSheet(o.dataset.open);});
+$("#sheet").addEventListener("click",e=>{if(e.target.id==="sheet") e.target.close();});
+$("#sheet").addEventListener("close",()=>{try{history.replaceState(null,"",location.pathname+location.search);}catch{}});
+$("#q").addEventListener("input",e=>{state.q=e.target.value;render();});
+$("#district").addEventListener("change",e=>{state.district=e.target.value;render();});
+$("#sort").addEventListener("change",e=>{state.sort=e.target.value;render();});
+document.querySelectorAll(".seg button").forEach(b=>b.addEventListener("click",()=>{document.querySelectorAll(".seg button").forEach(x=>x.setAttribute("aria-pressed",x===b));state.status=b.dataset.status;render();}));
+$("#subjects").addEventListener("click",e=>{const b=e.target.closest(".chip");if(!b)return;document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));state.subject=b.dataset.subject;render();});
+
+$("#nomForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const name=$("#n-name").value.trim(),school=$("#n-school").value.trim(),n=$("#notice");
+  n.hidden=false;
+  if(!name||!school){n.textContent="Add the teacher's name and their school and town, then send again.";return;}
+  n.textContent=`Thank you. Your nomination for ${name} is received. We'll be in touch before their story goes live.`;
+  e.target.reset();
+});
+
+render();
+const h=location.hash.slice(1); if(h&&TEACHERS.some(t=>t.id===h)) openSheet(h);
+</script>
+
+</body></html>

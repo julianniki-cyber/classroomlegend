@@ -1,0 +1,466 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Classroom Legends Teacher Profile</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Hind+Madurai:wght@400;500;600&family=Kalam:wght@400&display=swap">
+<style>
+/* Layout: chalkboard header with progress → section-nav rail (desktop) + one long form of numbered sections → submit bar; owner-only inbox below */
+:root{
+  --board:#1f3329;--board-2:#2a4337;--chalk:#f1f2ea;
+  --bg:#f7f6f1;--surface:#ffffff;--ink:#16201b;--muted:#5b6862;--line:#e3e1d8;
+  --gold:#b0841a;--gold-soft:#f5ead0;--tick:#c0392b;--tint:#eef1ea;--ok:#2f7a4f;
+  --shadow:0 1px 2px rgba(22,32,27,.05),0 6px 20px rgba(22,32,27,.05);
+  --f-display:"Newsreader",Georgia,serif;
+  --f-body:"Hind Madurai","Noto Sans Tamil","Segoe UI",system-ui,sans-serif;
+  --f-hand:"Kalam","Segoe Print",cursive;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --board:#15241d;--board-2:#1d3128;--chalk:#eceee5;--bg:#0f1512;--surface:#18201c;--ink:#e8ece6;--muted:#a1ada6;--line:#2a352f;
+  --gold:#ddb24c;--gold-soft:#33291a;--tick:#ec6b5d;--tint:#1e2823;--ok:#6cc08f;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.2);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --board:#15241d;--board-2:#1d3128;--chalk:#eceee5;--bg:#0f1512;--surface:#18201c;--ink:#e8ece6;--muted:#a1ada6;--line:#2a352f;
+  --gold:#ddb24c;--gold-soft:#33291a;--tick:#ec6b5d;--tint:#1e2823;--ok:#6cc08f;--shadow:0 1px 2px rgba(0,0,0,.3),0 6px 20px rgba(0,0,0,.2);color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:500;margin:0;line-height:1.15;text-wrap:balance}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* header */
+header{background:var(--board);color:var(--chalk)}
+.top{display:flex;align-items:center;gap:10px;padding-block:18px}
+.brand{font-family:var(--f-display);font-size:1.2rem;font-weight:500}
+.intro{padding-block:20px 34px;display:grid;gap:14px;max-width:720px}
+.eyebrow{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#e3c46f}
+.intro h1{font-size:clamp(1.9rem,4.4vw,2.8rem)}
+.intro p{opacity:.82;font-size:1.05rem;max-width:58ch}
+.intro .ta{font-size:.95rem;opacity:.7}
+.meta-row{display:flex;gap:22px;flex-wrap:wrap;font-size:.88rem;opacity:.8;margin-top:4px}
+.progress{position:sticky;top:env(safe-area-inset-top,0px);z-index:6;background:var(--surface);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--surface)}
+.progress .wrap{display:flex;align-items:center;gap:14px;padding-block:10px;font-size:.85rem;color:var(--muted)}
+.bar{flex:1;height:6px;background:var(--tint);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--tick);border-radius:99px;transition:width .3s ease}
+.progress b{color:var(--ink);font-variant-numeric:tabular-nums;min-width:3ch;text-align:right}
+
+/* layout */
+.layout{display:grid;grid-template-columns:220px minmax(0,1fr);gap:40px;padding-block:36px 60px}
+.rail{position:sticky;top:70px;align-self:start;display:grid;gap:2px}
+.rail a{display:flex;gap:10px;align-items:center;text-decoration:none;color:var(--muted);font-size:.9rem;padding:7px 10px;border-radius:8px}
+.rail a:hover{background:var(--tint);color:var(--ink)}
+.rail a .dot{width:20px;height:20px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;font-size:.7rem;flex:none;font-variant-numeric:tabular-nums}
+.rail a.done .dot{background:var(--ok);border-color:var(--ok);color:#fff}
+form{display:grid;gap:22px;min-width:0}
+fieldset{border:1px solid var(--line);background:var(--surface);border-radius:16px;padding:26px 26px 28px;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:18px 18px;box-shadow:var(--shadow);scroll-margin-top:70px;min-width:0}
+legend{display:contents}
+.sec-title{grid-column:1/-1;display:flex;gap:14px;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:2px}
+.sec-num{font-family:var(--f-display);font-size:1.5rem;color:var(--gold);line-height:1;font-variant-numeric:tabular-nums}
+.sec-title h2{font-size:1.35rem}
+.sec-title .ta{font-size:.88rem;color:var(--muted)}
+.sec-help{grid-column:1/-1;color:var(--muted);font-size:.93rem;margin-top:-6px}
+.full{grid-column:1/-1}
+.field{display:grid;gap:6px;min-width:0;align-content:start}
+.field>span{font-size:.88rem;font-weight:500}
+.field>span .req{color:var(--tick)}
+.field small{color:var(--muted);font-size:.8rem}
+input[type=text],input[type=tel],input[type=email],input[type=number],select,textarea{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 13px;color:var(--ink)}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px var(--gold-soft)}
+textarea{min-height:110px;resize:vertical;line-height:1.55}
+textarea.hand{font-family:var(--f-hand);font-size:1.2rem;min-height:80px}
+.invalid{border-color:var(--tick)!important}
+.radios{display:flex;flex-wrap:wrap;gap:8px}
+.radios label{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;font-size:.92rem;background:var(--bg)}
+.radios label:has(input:checked){border-color:var(--tick);background:var(--surface);color:var(--tick);font-weight:600}
+.radios input{accent-color:var(--tick);margin:0}
+.computed{font-size:.88rem;color:var(--muted);align-self:end;padding-bottom:12px}
+.computed b{color:var(--ink);font-family:var(--f-display);font-size:1.3rem;font-weight:500}
+
+/* repeaters */
+.list{grid-column:1/-1;display:grid;gap:10px}
+.row{display:grid;grid-template-columns:28px minmax(0,1fr) auto;gap:10px;align-items:center}
+.row .n{font-family:var(--f-display);color:var(--gold);text-align:center;font-variant-numeric:tabular-nums}
+.student{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) auto;gap:10px;align-items:end;padding:14px;border:1px dashed var(--line);border-radius:12px}
+.icon-btn{border:1px solid var(--line);background:var(--surface);border-radius:8px;width:38px;height:38px;cursor:pointer;color:var(--muted);font-size:1.1rem;line-height:1}
+.icon-btn:hover{color:var(--tick);border-color:var(--tick)}
+.add{justify-self:start;border:1px dashed var(--muted);background:transparent;border-radius:999px;padding:8px 16px;cursor:pointer;font-size:.9rem;color:var(--ink)}
+.add:hover{border-color:var(--tick);color:var(--tick)}
+.add[disabled]{opacity:.45;cursor:not-allowed}
+
+/* photos */
+.photos{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.drop{position:relative;border:1.5px dashed var(--line);border-radius:12px;aspect-ratio:4/5;max-width:100%;display:grid;place-items:center;text-align:center;padding:12px;background:var(--bg);cursor:pointer;overflow:hidden;font-size:.86rem;color:var(--muted)}
+.drop:hover{border-color:var(--gold)}
+.drop b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+.drop img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.drop input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.drop .state{position:absolute;left:8px;bottom:8px;background:rgba(15,21,18,.75);color:#fff;font-size:.74rem;padding:3px 8px;border-radius:99px}
+.note{grid-column:1/-1;background:var(--tint);border-radius:10px;padding:12px 14px;font-size:.9rem}
+
+/* consent */
+.checks{grid-column:1/-1;display:grid;gap:10px}
+.check{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:var(--bg);cursor:pointer}
+.check input{width:18px;height:18px;margin-top:3px;accent-color:var(--tick)}
+.check small{display:block;color:var(--muted);font-size:.84rem}
+
+/* submit */
+.submit{background:var(--board);color:var(--chalk);border-radius:16px;padding:24px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.submit p{opacity:.8;font-size:.93rem;max-width:48ch}
+.btn{border:0;border-radius:999px;padding:13px 24px;font-weight:600;cursor:pointer;background:var(--tick);color:#fff;font-size:.98rem}
+.btn:hover{filter:brightness(1.07)}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:var(--ink)}
+.msg{border-radius:12px;padding:16px 18px;font-size:.95rem;display:grid;gap:10px}
+.msg.err{background:var(--gold-soft)}
+.msg.ok{background:var(--tint);border:1px solid var(--ok)}
+.msg h3{font-size:1.25rem}
+.msg pre{white-space:pre-wrap;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px;font-size:.82rem;max-height:240px;overflow:auto;margin:0;font-family:var(--f-body)}
+.msg .actions{display:flex;gap:10px;flex-wrap:wrap}
+
+/* owner inbox */
+.inbox{border-top:1px solid var(--line);background:var(--surface)}
+.inbox .wrap{padding-block:40px 60px}
+.inbox-head{display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.inbox-head h2{font-size:1.7rem}
+.inbox-head p{color:var(--muted);font-size:.9rem}
+.sub{border:1px solid var(--line);border-radius:12px;margin-bottom:10px;background:var(--bg)}
+.sub summary{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr) auto;gap:12px;padding:14px 16px;cursor:pointer;list-style:none;align-items:center}
+.sub summary::-webkit-details-marker{display:none}
+.sub summary b{font-weight:600}
+.sub summary span{color:var(--muted);font-size:.88rem}
+.sub .body{padding:0 16px 16px;display:grid;gap:12px}
+.sub dl{display:grid;grid-template-columns:180px minmax(0,1fr);gap:6px 16px;margin:0;font-size:.9rem}
+.sub dt{color:var(--muted)}
+.sub dd{margin:0;white-space:pre-wrap}
+.thumbs{display:flex;gap:10px;flex-wrap:wrap}
+.thumbs img{width:90px;height:110px;object-fit:cover;border-radius:8px;border:1px solid var(--line)}
+.empty{border:1px dashed var(--line);border-radius:12px;padding:28px;text-align:center;color:var(--muted)}
+
+@media (max-width:860px){
+  .layout{grid-template-columns:1fr}
+  .rail{display:none}
+}
+@media (max-width:600px){
+  fieldset{grid-template-columns:1fr;padding:20px 18px 22px}
+  .student{grid-template-columns:1fr}
+  .photos{grid-template-columns:1fr 1fr}
+  .sub summary{grid-template-columns:1fr}
+  .sub dl{grid-template-columns:1fr}
+  .submit{padding:20px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3.5l4.4 10 10.9 1-8.3 7.2 2.5 10.7L20 26.8l-9.5 5.6 2.5-10.7-8.3-7.2 10.9-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 20.5l4.5 4.5L27.5 14" fill="none" stroke="#e05545" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span class="brand">Classroom Legends</span>
+    </div>
+    <div class="intro">
+      <div class="eyebrow">Teacher profile form</div>
+      <h1>Thank you for agreeing to share your story</h1>
+      <p>Your students nominated you. This form helps us tell your story with care and accuracy. Fill in what you're comfortable with; only the marked fields are required.</p>
+      <p class="ta">உங்கள் கதையைப் பகிர ஒப்புக்கொண்டதற்கு நன்றி. தமிழிலும் பதில் எழுதலாம்.</p>
+      <div class="meta-row"><span>About 15 minutes</span><span>Your progress saves on this device</span><span>Answer in Tamil or English</span></div>
+    </div>
+  </div>
+</header>
+
+<div class="progress" aria-live="polite"><div class="wrap"><span>Profile complete</span><div class="bar"><i id="barFill"></i></div><b id="barPct">0%</b></div></div>
+
+<div class="wrap layout">
+  <nav class="rail" aria-label="Form sections" id="rail"></nav>
+
+  <form id="f" novalidate>
+    <fieldset id="s-about" data-sec="About you">
+      <legend><div class="sec-title"><span class="sec-num">1</span><div><h2>About you</h2><div class="ta">உங்களைப் பற்றி</div></div></div></legend>
+      <label class="field"><span>Title</span>
+        <select id="title" name="title"><option>Mr.</option><option>Mrs.</option><option>Ms.</option><option>Dr.</option><option>Sr.</option><option>Br.</option></select></label>
+      <label class="field"><span>Full name <span class="req">*</span></span><input id="name" name="name" type="text" required placeholder="As you'd like it printed"></label>
+      <label class="field"><span>Mobile / WhatsApp number <span class="req">*</span></span><input id="phone" name="phone" type="tel" required placeholder="+91 98xxx xxxxx" inputmode="tel"></label>
+      <label class="field"><span>Email</span><input id="email" name="email" type="email" placeholder="Optional"></label>
+      <label class="field full"><span>Home town</span><input id="hometown" name="hometown" type="text" placeholder="Where you grew up"></label>
+    </fieldset>
+
+    <fieldset id="s-journey" data-sec="Teaching journey">
+      <legend><div class="sec-title"><span class="sec-num">2</span><div><h2>Your teaching journey</h2><div class="ta">ஆசிரியர் பயணம்</div></div></div></legend>
+      <div class="field full"><span>Are you currently teaching? <span class="req">*</span></span>
+        <div class="radios" role="radiogroup"><label><input type="radio" name="status" value="Serving" checked>Currently teaching</label><label><input type="radio" name="status" value="Retired">Retired</label></div></div>
+      <label class="field"><span>Current or last school <span class="req">*</span></span><input id="school" name="school" type="text" required placeholder="e.g. Govt. Higher Secondary School"></label>
+      <label class="field"><span>Town / village <span class="req">*</span></span><input id="town" name="town" type="text" required></label>
+      <label class="field"><span>District <span class="req">*</span></span><select id="district" name="district" required><option value="">Choose district</option></select></label>
+      <label class="field"><span>Main subject <span class="req">*</span></span><select id="subject" name="subject" required><option value="">Choose subject</option></select></label>
+      <label class="field"><span>Year you started teaching <span class="req">*</span></span><input id="startYear" name="startYear" type="number" required min="1950" max="2026" placeholder="e.g. 1988" inputmode="numeric"></label>
+      <label class="field" id="retWrap" hidden><span>Year you retired</span><input id="endYear" name="endYear" type="number" min="1960" max="2026" placeholder="e.g. 2021" inputmode="numeric"></label>
+      <div class="computed" id="yearsOut"></div>
+      <label class="field"><span>Classes you taught</span><input id="classes" name="classes" type="text" placeholder="e.g. 6th to 12th"></label>
+      <label class="field"><span>Approx. number of students taught</span><input id="students" name="students" type="number" min="0" placeholder="e.g. 2000" inputmode="numeric"></label>
+      <label class="field full"><span>Other schools you served in</span><textarea id="otherSchools" name="otherSchools" placeholder="School name, town and years, one per line"></textarea></label>
+    </fieldset>
+
+    <fieldset id="s-prides" data-sec="Your prides">
+      <legend><div class="sec-title"><span class="sec-num">3</span><div><h2>Your prides</h2><div class="ta">உங்கள் பெருமைகள்</div></div></div></legend>
+      <p class="sec-help">Short lines about what you're proud of. For example: "Ran free evening classes for 20 years" or "Started the school library".</p>
+      <div class="list" id="prideList"></div>
+      <button type="button" class="add" id="addPride">+ Add another pride</button>
+      <label class="field full"><span>Awards and recognitions</span><textarea id="awards" name="awards" placeholder="Award name, given by, year. One per line."></textarea></label>
+    </fieldset>
+
+    <fieldset id="s-story" data-sec="Your story">
+      <legend><div class="sec-title"><span class="sec-num">4</span><div><h2>Your story</h2><div class="ta">உங்கள் கதை</div></div></div></legend>
+      <p class="sec-help">Write freely, as if talking to a former student. We'll shape it into your tribute and show it to you before publishing.</p>
+      <label class="field full"><span>Why did you become a teacher?</span><textarea id="why" name="why"></textarea></label>
+      <label class="field full"><span>A moment in your career you'll never forget</span><textarea id="moment" name="moment"></textarea></label>
+      <label class="field full"><span>A difficulty you faced, and how you overcame it</span><textarea id="challenge" name="challenge"></textarea></label>
+      <label class="field full"><span>A student whose success makes you proud (no names needed)</span><textarea id="proudStudent" name="proudStudent"></textarea></label>
+    </fieldset>
+
+    <fieldset id="s-lesson" data-sec="Your lesson">
+      <legend><div class="sec-title"><span class="sec-num">5</span><div><h2>The lesson you always taught</h2><div class="ta">உங்கள் வாழ்க்கைப் பாடம்</div></div></div></legend>
+      <label class="field full"><span>One line of advice your students remember you for <span class="req">*</span></span>
+        <textarea id="lesson" name="lesson" class="hand" required placeholder="Don't be afraid of the problem. Be curious about it."></textarea>
+        <small>This appears in large handwriting on your tribute.</small></label>
+      <label class="field full"><span>Your message to today's students</span><textarea id="message" name="message"></textarea></label>
+    </fieldset>
+
+    <fieldset id="s-students" data-sec="Former students">
+      <legend><div class="sec-title"><span class="sec-num">6</span><div><h2>Former students we can talk to</h2><div class="ta">முன்னாள் மாணவர்கள்</div></div></div></legend>
+      <p class="sec-help">Up to three students who could share a memory of you. Please add them only if they're happy to be contacted.</p>
+      <div class="list" id="studentList"></div>
+      <button type="button" class="add" id="addStudent">+ Add a student</button>
+    </fieldset>
+
+    <fieldset id="s-photos" data-sec="Photos">
+      <legend><div class="sec-title"><span class="sec-num">7</span><div><h2>Photos</h2><div class="ta">புகைப்படங்கள்</div></div></div></legend>
+      <p class="sec-help">Clear, recent photos work best. Old classroom photos make wonderful "Then &amp; Now" posts.</p>
+      <div class="photos" id="photos"></div>
+      <div class="note" id="photoNote" hidden>Photo upload isn't available in this view. Please send your photos on WhatsApp to the Classroom Legends team instead.</div>
+    </fieldset>
+
+    <fieldset id="s-prefs" data-sec="Preferences">
+      <legend><div class="sec-title"><span class="sec-num">8</span><div><h2>Your preferences</h2><div class="ta">உங்கள் விருப்பங்கள்</div></div></div></legend>
+      <div class="field full"><span>Language for your story</span>
+        <div class="radios"><label><input type="radio" name="lang" value="Tamil">Tamil</label><label><input type="radio" name="lang" value="English">English</label><label><input type="radio" name="lang" value="Both" checked>Both</label></div></div>
+      <div class="field full"><span>Are you comfortable with a short video interview?</span>
+        <div class="radios"><label><input type="radio" name="video" value="Yes" checked>Yes</label><label><input type="radio" name="video" value="Audio only">Audio only</label><label><input type="radio" name="video" value="No">No, written only</label></div></div>
+      <div class="field full"><span>Where would you like to be felicitated?</span>
+        <div class="radios"><label><input type="radio" name="felicitation" value="At my school" checked>At my school</label><label><input type="radio" name="felicitation" value="At home">At home</label><label><input type="radio" name="felicitation" value="Annual awards event">Annual awards event</label></div></div>
+      <div class="field full"><span>If a sponsor offers a gift, who should receive it?</span>
+        <div class="radios"><label><input type="radio" name="gift" value="My school / students" checked>My school or students</label><label><input type="radio" name="gift" value="Me">Me</label><label><input type="radio" name="gift" value="No gift needed">No gift needed</label></div>
+        <small>Government teachers: gifts to your school are usually the simplest choice under service rules.</small></div>
+      <label class="field"><span>Best time to call you</span><input id="callTime" name="callTime" type="text" placeholder="e.g. Weekdays after 5 pm"></label>
+      <label class="field"><span>Anything we should know?</span><input id="notes" name="notes" type="text" placeholder="Optional"></label>
+    </fieldset>
+
+    <fieldset id="s-consent" data-sec="Consent">
+      <legend><div class="sec-title"><span class="sec-num">9</span><div><h2>Your consent</h2><div class="ta">ஒப்புதல்</div></div></div></legend>
+      <div class="checks">
+        <label class="check"><input type="checkbox" id="c-story" name="c_story" required><span><b>Publish my story <span style="color:var(--tick)">*</span></b><small>Classroom Legends may publish my story on its website, Instagram and Facebook after I review it.</small></span></label>
+        <label class="check"><input type="checkbox" id="c-photos" name="c_photos"><span><b>Use my photos</b><small>The photos I share may be used in my tribute.</small></span></label>
+        <label class="check"><input type="checkbox" id="c-video" name="c_video"><span><b>Record and share video</b><small>A video interview may be recorded and shared as Reels.</small></span></label>
+        <label class="check"><input type="checkbox" id="c-students" name="c_students"><span><b>Contact my former students</b><small>The team may contact the students I listed, who have agreed to be contacted.</small></span></label>
+        <label class="check"><input type="checkbox" id="c-sponsor" name="c_sponsor"><span><b>Sponsor line</b><small>I understand a "Supported by" sponsor name may appear on my tribute, and that this does not mean I endorse that business.</small></span></label>
+      </div>
+      <label class="field"><span>Type your full name as signature <span class="req">*</span></span><input id="signature" name="signature" type="text" required></label>
+      <div class="computed" id="dateOut"></div>
+    </fieldset>
+
+    <div id="formMsg" hidden></div>
+
+    <div class="submit">
+      <p>We'll call you before anything is published, and you'll see your final tribute first.</p>
+      <button class="btn" type="submit" id="submitBtn">Submit my profile</button>
+    </div>
+  </form>
+</div>
+
+<section class="inbox" id="inbox" hidden>
+  <div class="wrap">
+    <div class="inbox-head"><div><div class="eyebrow" style="color:var(--gold)">Only you can see this</div><h2>Received profiles</h2></div><p id="inboxCount"></p></div>
+    <div id="inboxList"></div>
+  </div>
+</section>
+
+<script>
+const DISTRICTS=["Ariyalur","Chengalpattu","Chennai","Coimbatore","Cuddalore","Dharmapuri","Dindigul","Erode","Kallakurichi","Kancheepuram","Kanniyakumari","Karur","Krishnagiri","Madurai","Mayiladuthurai","Nagapattinam","Namakkal","Nilgiris","Perambalur","Pudukkottai","Ramanathapuram","Ranipet","Salem","Sivaganga","Tenkasi","Thanjavur","Theni","Thoothukudi","Tiruchirappalli","Tirunelveli","Tirupathur","Tiruppur","Tiruvallur","Tiruvannamalai","Tiruvarur","Vellore","Viluppuram","Virudhunagar"];
+const SUBJECTS=["Tamil","English","Mathematics","Science","Physics","Chemistry","Biology","Social Science","History","Geography","Commerce","Economics","Computer Science","Physical Education","Arts & Crafts","Music","Agriculture","Primary (all subjects)","Headmaster / Headmistress","Other"];
+const PHOTO_SLOTS=[{k:"recent",t:"Recent portrait",d:"Face clearly visible"},{k:"classroom",t:"In the classroom",d:"Teaching or with students"},{k:"old",t:"An old photo",d:"For a Then & Now post"}];
+const MAX_PRIDES=5, MAX_STUDENTS=3, DRAFT_KEY="cl-teacher-draft";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+$("#district").insertAdjacentHTML("beforeend",DISTRICTS.map(d=>`<option>${d}</option>`).join(""));
+$("#subject").insertAdjacentHTML("beforeend",SUBJECTS.map(s=>`<option>${esc(s)}</option>`).join(""));
+$("#rail").innerHTML=$$("fieldset").map((f,i)=>`<a href="#${f.id}" data-for="${f.id}"><span class="dot">${i+1}</span>${f.dataset.sec}</a>`).join("");
+$("#dateOut").innerHTML=`Date: <b style="font-size:1rem">${new Date().toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric"})}</b>`;
+
+/* ---- repeaters ---- */
+let prides=[""], studs=[{name:"",role:"",phone:""}], photos={};
+function drawPrides(){
+  $("#prideList").innerHTML=prides.map((p,i)=>`<div class="row"><span class="n">${i+1}</span><input type="text" id="pride-${i}" data-pride="${i}" value="${esc(p)}" placeholder="e.g. Ran free evening classes for 20 years" aria-label="Pride ${i+1}">${prides.length>1?`<button type="button" class="icon-btn" data-delpride="${i}" aria-label="Remove pride ${i+1}">×</button>`:"<span></span>"}</div>`).join("");
+  $("#addPride").disabled=prides.length>=MAX_PRIDES;
+}
+function drawStudents(){
+  $("#studentList").innerHTML=studs.map((s,i)=>`<div class="student">
+    <label class="field"><span>Name</span><input type="text" id="st-name-${i}" data-st="${i}" data-k="name" value="${esc(s.name)}"></label>
+    <label class="field"><span>What they do now</span><input type="text" id="st-role-${i}" data-st="${i}" data-k="role" value="${esc(s.role)}" placeholder="e.g. Doctor, Chennai"></label>
+    <label class="field"><span>Phone</span><input type="tel" id="st-phone-${i}" data-st="${i}" data-k="phone" value="${esc(s.phone)}"></label>
+    ${studs.length>1?`<button type="button" class="icon-btn" data-delst="${i}" aria-label="Remove student ${i+1}">×</button>`:"<span></span>"}</div>`).join("");
+  $("#addStudent").disabled=studs.length>=MAX_STUDENTS;
+}
+$("#addPride").onclick=()=>{if(prides.length<MAX_PRIDES){prides.push("");drawPrides();$(`#pride-${prides.length-1}`).focus();save();}};
+$("#addStudent").onclick=()=>{if(studs.length<MAX_STUDENTS){studs.push({name:"",role:"",phone:""});drawStudents();save();}};
+document.addEventListener("click",e=>{
+  const dp=e.target.closest("[data-delpride]"); if(dp){prides.splice(+dp.dataset.delpride,1);drawPrides();save();}
+  const ds=e.target.closest("[data-delst]"); if(ds){studs.splice(+ds.dataset.delst,1);drawStudents();save();}
+});
+document.addEventListener("input",e=>{
+  if(e.target.dataset.pride!==undefined) prides[+e.target.dataset.pride]=e.target.value;
+  if(e.target.dataset.st!==undefined) studs[+e.target.dataset.st][e.target.dataset.k]=e.target.value;
+});
+
+/* ---- photos ---- */
+function drawPhotos(){
+  $("#photos").innerHTML=PHOTO_SLOTS.map(s=>{const p=photos[s.k];return `<label class="drop" for="ph-${s.k}">
+    ${p&&p.url?`<img src="${esc(p.url)}" alt="${esc(s.t)}">`:""}
+    ${p&&p.preview&&!p.url?`<img src="${p.preview}" alt="${esc(s.t)}">`:""}
+    <span><b>${esc(s.t)}</b>${esc(s.d)}<br>Tap to choose</span>
+    <input type="file" id="ph-${s.k}" accept="image/*" data-slot="${s.k}">
+    ${p?`<span class="state">${p.state}</span>`:""}</label>`}).join("");
+}
+let assetsApi=null;
+document.addEventListener("change",async e=>{
+  const slot=e.target.dataset.slot; if(!slot) return;
+  const file=e.target.files[0]; if(!file) return;
+  if(file.size>15*1024*1024){photos[slot]={state:"Too large (max 15 MB)"};drawPhotos();return;}
+  photos[slot]={preview:URL.createObjectURL(file),state:"Uploading…"};drawPhotos();
+  try{const r=await assetsApi.upload(file);photos[slot]={id:r.id,url:r.url,state:"Uploaded"};}
+  catch{photos[slot]={preview:photos[slot].preview,state:"Upload failed. Try again"};}
+  drawPhotos();save();
+});
+
+/* ---- status & years ---- */
+function syncYears(){
+  const retired=$('input[name="status"]:checked').value==="Retired";
+  $("#retWrap").hidden=!retired;
+  const s=+$("#startYear").value, en=retired&&+$("#endYear").value?+$("#endYear").value:2026;
+  $("#yearsOut").innerHTML=s>=1950&&en>=s?`Years of service: <b>${en-s}</b>`:"";
+}
+$$('input[name="status"]').forEach(r=>r.addEventListener("change",syncYears));
+$("#startYear").addEventListener("input",syncYears);$("#endYear").addEventListener("input",syncYears);
+
+/* ---- collect / draft / progress ---- */
+function collect(){
+  const fd=new FormData($("#f")), o={};
+  for(const [k,v] of fd.entries()) if(typeof v==="string") o[k]=v.trim();
+  ["c_story","c_photos","c_video","c_students","c_sponsor"].forEach(k=>o[k]=!!$(`[name="${k}"]`).checked);
+  o.prides=prides.map(p=>p.trim()).filter(Boolean);
+  o.students=studs.filter(s=>s.name.trim()||s.phone.trim()).map(s=>({name:s.name.trim(),role:s.role.trim(),phone:s.phone.trim()}));
+  o.photos=Object.fromEntries(Object.entries(photos).filter(([,p])=>p.id).map(([k,p])=>[k,{id:p.id,url:p.url}]));
+  if(o.status!=="Retired") o.endYear="";
+  return o;
+}
+function save(){
+  progress();
+  try{localStorage.setItem(DRAFT_KEY,JSON.stringify({...collect(),photosState:Object.fromEntries(Object.entries(photos).filter(([,p])=>p.id).map(([k,p])=>[k,{id:p.id,url:p.url,state:"Uploaded"}]))}));}catch{}
+}
+function load(){
+  let d=null; try{d=JSON.parse(localStorage.getItem(DRAFT_KEY)||"null");}catch{}
+  if(!d) return;
+  Object.entries(d).forEach(([k,v])=>{
+    const els=document.getElementsByName(k);
+    if(!els.length||typeof v==="object") return;
+    els.forEach(el=>{ if(el.type==="radio") el.checked=el.value===v; else if(el.type==="checkbox") el.checked=!!v; else el.value=v; });
+  });
+  if(d.prides?.length) prides=d.prides;
+  if(d.students?.length) studs=d.students;
+  if(d.photosState) photos=d.photosState;
+}
+const REQ=["name","phone","school","town","district","subject","startYear","lesson","signature"];
+function progress(){
+  const d=collect();
+  const checks=[...REQ.map(k=>!!d[k]),d.c_story,d.prides.length>0,!!(d.why||d.moment),d.students.length>0,Object.keys(d.photos).length>0||!assetsApi];
+  const pct=Math.round(checks.filter(Boolean).length/checks.length*100);
+  $("#barFill").style.width=pct+"%";$("#barPct").textContent=pct+"%";
+  const done={ "s-about":!!(d.name&&d.phone),"s-journey":!!(d.school&&d.town&&d.district&&d.subject&&d.startYear),"s-prides":d.prides.length>0,"s-story":!!(d.why||d.moment||d.challenge),"s-lesson":!!d.lesson,"s-students":d.students.length>0,"s-photos":Object.keys(d.photos).length>0,"s-prefs":true,"s-consent":!!(d.c_story&&d.signature)};
+  $$("#rail a").forEach(a=>a.classList.toggle("done",!!done[a.dataset.for]));
+}
+$("#f").addEventListener("input",()=>{clearTimeout(window._t);window._t=setTimeout(save,400);});
+$("#f").addEventListener("change",save);
+
+function asText(d){
+  const L=[`CLASSROOM LEGENDS: TEACHER PROFILE`,``,`${d.title} ${d.name}`,`Phone: ${d.phone}${d.email?` · Email: ${d.email}`:""}`,`Home town: ${d.hometown||"-"}`,``,
+  `Status: ${d.status}`,`School: ${d.school}, ${d.town}, ${d.district}`,`Subject: ${d.subject}`,`Years: ${d.startYear}–${d.endYear||"present"}`,`Classes: ${d.classes||"-"} · Students taught: ${d.students_count||d.studentsTaught||$("#students").value||"-"}`,
+  `Other schools: ${d.otherSchools||"-"}`,``,`PRIDES`,...d.prides.map((p,i)=>`${i+1}. ${p}`),`Awards: ${d.awards||"-"}`,``,
+  `Why I became a teacher: ${d.why||"-"}`,`Unforgettable moment: ${d.moment||"-"}`,`Difficulty overcome: ${d.challenge||"-"}`,`Proud student: ${d.proudStudent||"-"}`,``,
+  `LESSON: "${d.lesson}"`,`Message to students: ${d.message||"-"}`,``,`FORMER STUDENTS`,...(d.students.length?d.students.map(s=>`- ${s.name} (${s.role||"-"}) ${s.phone}`):["-"]),``,
+  `Language: ${d.lang} · Video: ${d.video} · Felicitation: ${d.felicitation} · Gift: ${d.gift}`,`Call time: ${d.callTime||"-"} · Notes: ${d.notes||"-"}`,``,
+  `Consent: story ${d.c_story?"✓":"✗"}, photos ${d.c_photos?"✓":"✗"}, video ${d.c_video?"✓":"✗"}, students ${d.c_students?"✓":"✗"}, sponsor line ${d.c_sponsor?"✓":"✗"}`,`Signed: ${d.signature} · ${new Date().toLocaleDateString("en-IN")}`];
+  return L.join("\n");
+}
+
+/* ---- submit ---- */
+let db=null,user=null,myId=null;
+function showMsg(kind,html){const m=$("#formMsg");m.className="msg "+kind;m.innerHTML=html;m.hidden=false;m.scrollIntoView({block:"center"});}
+$("#f").addEventListener("submit",async e=>{
+  e.preventDefault();
+  $$(".invalid").forEach(x=>x.classList.remove("invalid"));
+  const d=collect(), missing=[];
+  REQ.forEach(k=>{if(!d[k]){missing.push(k);$(`#${k}`)?.classList.add("invalid");}});
+  if(!d.c_story){missing.push("consent");$("#c-story").closest(".check").classList.add("invalid");}
+  if(missing.length){showMsg("err",`<h3>A few details are missing</h3><p>Please fill the fields marked in red, and tick "Publish my story" in section 9.</p>`);$(".invalid")?.focus();return;}
+  d.studentsTaught=$("#students").value;
+  const btn=$("#submitBtn");btn.disabled=true;btn.textContent="Submitting…";
+  let saved=false;
+  if(db&&myId){
+    try{await db.doc(`profiles/${myId}`).set({...d,submittedAt:new Date().toISOString()});saved=true;}catch{}
+  }
+  btn.disabled=false;btn.textContent="Update my profile";
+  if(saved){
+    showMsg("ok",`<h3>Thank you, ${esc(d.title)} ${esc(d.name)}</h3><p>Your profile has reached the Classroom Legends team. We'll call you${d.callTime?` (${esc(d.callTime)})`:""} to talk about your story. You can come back and update this form anytime.</p>`);
+  }else{
+    showMsg("ok",`<h3>Almost done: please send us your details</h3><p>This view can't send the form directly. Copy your details below and send them to the Classroom Legends team on WhatsApp.</p><pre id="copyText">${esc(asText(d))}</pre><div class="actions"><button type="button" class="btn" id="copyBtn">Copy my details</button></div>`);
+    $("#copyBtn").onclick=async ev=>{try{await navigator.clipboard.writeText(asText(d));ev.target.textContent="Copied. Paste it in WhatsApp";}catch{const r=document.createRange();r.selectNodeContents($("#copyText"));const s=getSelection();s.removeAllRanges();s.addRange(r);ev.target.textContent="Text selected. Copy it manually";}};
+  }
+});
+
+/* ---- owner inbox ---- */
+function drawInbox(docs){
+  $("#inboxCount").textContent=`${docs.length} ${docs.length===1?"profile":"profiles"} received`;
+  if(!docs.length){$("#inboxList").innerHTML=`<div class="empty">No profiles yet. Share this form's link with nominated teachers, and their submissions will appear here.</div>`;return;}
+  docs.sort((a,b)=>(b.submittedAt||"").localeCompare(a.submittedAt||""));
+  $("#inboxList").innerHTML=docs.map(d=>{
+    const ph=Object.values(d.photos||{});
+    const rows=[["Phone",d.phone],["Email",d.email],["School",`${d.school}, ${d.town}, ${d.district}`],["Subject",d.subject],["Years",`${d.startYear}–${d.endYear||"present"} (${d.status})`],["Classes",d.classes],["Students taught",d.studentsTaught],["Other schools",d.otherSchools],
+      ["Prides",(d.prides||[]).map((p,i)=>`${i+1}. ${p}`).join("\n")],["Awards",d.awards],["Why teaching",d.why],["Unforgettable moment",d.moment],["Difficulty overcome",d.challenge],["Proud student",d.proudStudent],["Lesson",d.lesson],["Message",d.message],
+      ["Former students",(d.students||[]).map(s=>`${s.name} (${s.role||"-"}) ${s.phone}`).join("\n")],["Preferences",`Language: ${d.lang} · Video: ${d.video} · Felicitation: ${d.felicitation} · Gift: ${d.gift}`],["Call time",d.callTime],["Notes",d.notes],
+      ["Consent",`Story ${d.c_story?"✓":"✗"} · Photos ${d.c_photos?"✓":"✗"} · Video ${d.c_video?"✓":"✗"} · Students ${d.c_students?"✓":"✗"} · Sponsor ${d.c_sponsor?"✓":"✗"}`],["Signed",d.signature]].filter(r=>r[1]);
+    return `<details class="sub"><summary><b>${esc(d.title)} ${esc(d.name)}</b><span>${esc(d.subject)} · ${esc(d.town)}, ${esc(d.district)}</span><span>${d.submittedAt?new Date(d.submittedAt).toLocaleDateString("en-IN",{day:"numeric",month:"short"}):""}</span></summary>
+      <div class="body">${ph.length?`<div class="thumbs">${ph.map(p=>`<img src="${esc(p.url||"/_blob/"+p.id)}" alt="">`).join("")}</div>`:""}<dl>${rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl></div></details>`;}).join("");
+}
+
+/* ---- boot ---- */
+load();drawPrides();drawStudents();drawPhotos();syncYears();progress();
+(async()=>{
+  if(!window.claude?.use){$("#photoNote").hidden=false;$("#photos").hidden=true;return;}
+  const [d,u,a]=await Promise.all([claude.use("db"),claude.use("user"),claude.use("assets")]);
+  db=d;user=u;assetsApi=a;
+  if(!assetsApi){$("#photoNote").hidden=false;$("#photos").hidden=true;}
+  progress();
+  if(user){ try{myId=await user.id();}catch{} }
+  if(db&&myId){
+    try{const snap=await db.doc(`profiles/${myId}`).get(); if(snap.exists){$("#submitBtn").textContent="Update my profile";}}catch{}
+  }
+  let isOwner=false,canEdit=false;
+  try{isOwner=(await user?.isOwner())??false;canEdit=(await user?.canEdit())??false;}catch{}
+  if(db&&(isOwner||canEdit)){
+    $("#inbox").hidden=false;
+    try{db.collection("profiles").onSnapshot(s=>drawInbox(s.docs.map(x=>x.data())),()=>{$("#inboxList").innerHTML=`<div class="empty">Couldn't load profiles right now. Reload the page to try again.</div>`;});}catch{}
+  }
+})();
+</script>
+
+</body></html>
