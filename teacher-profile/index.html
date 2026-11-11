@@ -229,7 +229,6 @@ textarea.hand{font-family:var(--f-hand);font-size:1.2rem;min-height:80px}
       <legend><div class="sec-title"><span class="sec-num">6</span><div><h2>Photos</h2><div class="ta">புகைப்படங்கள்</div></div></div></legend>
       <p class="sec-help">Clear, recent photos work best. Old classroom photos make wonderful "Then &amp; Now" posts.</p>
       <div class="photos" id="photos"></div>
-      <div class="note" id="photoNote" hidden>Photo upload isn't available in this view. Please send your photos on WhatsApp to the Classroom Legends team instead.</div>
     </fieldset>
 
     <fieldset id="s-consent" data-sec="Consent">
@@ -264,6 +263,8 @@ const DISTRICTS=["Ariyalur","Chengalpattu","Chennai","Coimbatore","Cuddalore","D
 const SUBJECTS=["Tamil","English","Mathematics","Science","Physics","Chemistry","Biology","Social Science","History","Geography","Commerce","Economics","Computer Science","Physical Education","Arts & Crafts","Music","Agriculture","Primary (all subjects)","Headmaster / Headmistress","Other"];
 const PHOTO_SLOTS=[{k:"recent",t:"Recent portrait",d:"Face clearly visible"},{k:"classroom",t:"In the classroom",d:"Teaching or with students"},{k:"old",t:"An old photo",d:"For a Then & Now post"}];
 const MAX_PRIDES=5, MAX_STUDENTS=3, DRAFT_KEY="cl-teacher-draft";
+// Paste the Google Apps Script web app URL here (ends in /exec) so profiles and photos go to your Google Drive and Sheet.
+const UPLOAD_URL = "";
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
@@ -300,11 +301,27 @@ document.addEventListener("change",async e=>{
   const slot=e.target.dataset.slot; if(!slot) return;
   const file=e.target.files[0]; if(!file) return;
   if(file.size>15*1024*1024){photos[slot]={state:"Too large (max 15 MB)"};drawPhotos();return;}
-  photos[slot]={preview:URL.createObjectURL(file),state:"Uploading…"};drawPhotos();
-  try{const r=await assetsApi.upload(file);photos[slot]={id:r.id,url:r.url,state:"Uploaded"};}
-  catch{photos[slot]={preview:photos[slot].preview,state:"Upload failed. Try again"};}
+  photos[slot]={preview:URL.createObjectURL(file),file,state:assetsApi?"Uploading…":"Selected ✓"};drawPhotos();
+  if(assetsApi){
+    try{const r=await assetsApi.upload(file);photos[slot]={id:r.id,url:r.url,state:"Uploaded"};}
+    catch{photos[slot]={preview:photos[slot].preview,state:"Upload failed. Try again"};}
+  }
   drawPhotos();save();
 });
+
+const hasPhotos=()=>Object.values(photos).some(p=>p.id||p.file);
+// Shrink a photo to at most 1600px (JPEG) so it uploads quickly on mobile data.
+function shrink(file){
+  return new Promise(res=>{
+    const raw=()=>{const fr=new FileReader();fr.onload=()=>res({mime:file.type||"image/jpeg",data:String(fr.result).split(",")[1]});fr.readAsDataURL(file);};
+    const img=new Image(),url=URL.createObjectURL(file);
+    img.onload=()=>{const k=Math.min(1,1600/Math.max(img.width,img.height)),c=document.createElement("canvas");
+      c.width=Math.round(img.width*k);c.height=Math.round(img.height*k);c.getContext("2d").drawImage(img,0,0,c.width,c.height);
+      URL.revokeObjectURL(url);res({mime:"image/jpeg",data:c.toDataURL("image/jpeg",.85).split(",")[1]});};
+    img.onerror=()=>{URL.revokeObjectURL(url);raw();};
+    img.src=url;
+  });
+}
 
 /* ---- status & years ---- */
 function syncYears(){
@@ -344,10 +361,10 @@ function load(){
 const REQ=["name","phone","school","town","district","subject","startYear","lesson","signature"];
 function progress(){
   const d=collect();
-  const checks=[...REQ.map(k=>!!d[k]),d.c_story,d.prides.length>0,!!(d.why||d.moment),Object.keys(d.photos).length>0||!assetsApi];
+  const checks=[...REQ.map(k=>!!d[k]),d.c_story,d.prides.length>0,!!(d.why||d.moment),hasPhotos()];
   const pct=Math.round(checks.filter(Boolean).length/checks.length*100);
   $("#barFill").style.width=pct+"%";$("#barPct").textContent=pct+"%";
-  const done={ "s-about":!!(d.name&&d.phone),"s-journey":!!(d.school&&d.town&&d.district&&d.subject&&d.startYear),"s-prides":d.prides.length>0,"s-story":!!(d.why||d.moment||d.challenge),"s-lesson":!!d.lesson,"s-photos":Object.keys(d.photos).length>0,"s-consent":!!(d.c_story&&d.signature)};
+  const done={ "s-about":!!(d.name&&d.phone),"s-journey":!!(d.school&&d.town&&d.district&&d.subject&&d.startYear),"s-prides":d.prides.length>0,"s-story":!!(d.why||d.moment||d.challenge),"s-lesson":!!d.lesson,"s-photos":hasPhotos(),"s-consent":!!(d.c_story&&d.signature)};
   $$("#rail a").forEach(a=>a.classList.toggle("done",!!done[a.dataset.for]));
 }
 $("#f").addEventListener("input",()=>{clearTimeout(window._t);window._t=setTimeout(save,400);});
@@ -379,11 +396,21 @@ $("#f").addEventListener("submit",async e=>{
   if(db&&myId){
     try{await db.doc(`profiles/${myId}`).set({...d,submittedAt:new Date().toISOString()});saved=true;}catch{}
   }
+  if(!saved&&UPLOAD_URL){
+    try{
+      const pics=await Promise.all(Object.entries(photos).filter(([,p])=>p.file).map(async([k,p])=>({slot:k,...await shrink(p.file)})));
+      const r=await fetch(UPLOAD_URL,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify({profile:d,photos:pics})});
+      saved=!!(await r.json()).ok;
+    }catch{}
+  }
   btn.disabled=false;btn.textContent="Update my profile";
   if(saved){
     showMsg("ok",`<h3>Thank you, ${esc(d.title)} ${esc(d.name)}</h3><p>Your profile has reached the Classroom Legends team. We'll call you to talk about your story. You can come back and update this form anytime.</p>`);
   }else{
-    showMsg("ok",`<h3>Almost done: please send us your details</h3><p>This view can't send the form directly. Copy your details below and send them to the Classroom Legends team on WhatsApp.</p><pre id="copyText">${esc(asText(d))}</pre><div class="actions"><button type="button" class="btn" id="copyBtn">Copy my details</button></div>`);
+    const files=Object.values(photos).filter(p=>p.file).map(p=>p.file);
+    const canShare=files.length&&navigator.canShare?.({files});
+    showMsg("ok",`<h3>Almost done: please send us your details</h3><p>${canShare?"Tap the button below to send your details and photos to the Classroom Legends team on WhatsApp.":`Copy your details below and send them to the Classroom Legends team on WhatsApp${files.length?", and attach your photos there too":""}.`}</p><pre id="copyText">${esc(asText(d))}</pre><div class="actions">${canShare?`<button type="button" class="btn" id="shareBtn">Send on WhatsApp with photos</button>`:""}<button type="button" class="btn${canShare?" ghost":""}" id="copyBtn">Copy my details</button></div>`);
+    if(canShare) $("#shareBtn").onclick=async()=>{try{await navigator.share({text:asText(d),files});}catch{}};
     $("#copyBtn").onclick=async ev=>{try{await navigator.clipboard.writeText(asText(d));ev.target.textContent="Copied. Paste it in WhatsApp";}catch{const r=document.createRange();r.selectNodeContents($("#copyText"));const s=getSelection();s.removeAllRanges();s.addRange(r);ev.target.textContent="Text selected. Copy it manually";}};
   }
 });
@@ -405,10 +432,9 @@ function drawInbox(docs){
 /* ---- boot ---- */
 load();drawPrides();drawPhotos();syncYears();progress();
 (async()=>{
-  if(!window.claude?.use){$("#photoNote").hidden=false;$("#photos").hidden=true;return;}
+  if(!window.claude?.use) return;
   const [d,u,a]=await Promise.all([claude.use("db"),claude.use("user"),claude.use("assets")]);
   db=d;user=u;assetsApi=a;
-  if(!assetsApi){$("#photoNote").hidden=false;$("#photos").hidden=true;}
   progress();
   if(user){ try{myId=await user.id();}catch{} }
   if(db&&myId){
