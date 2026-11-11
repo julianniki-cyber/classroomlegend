@@ -2,7 +2,7 @@
 <title>Classroom Legends Teacher Profile</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Hind+Madurai:wght@400;500;600&family=Kalam:wght@400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600&family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Hind+Madurai:wght@400;500;600&family=Kalam:wght@400&display=swap">
 <style>
 /* Layout: chalkboard header with progress → section-nav rail (desktop) + one long form of numbered sections → submit bar; owner-only inbox below */
 :root{
@@ -31,9 +31,10 @@ button,input,select,textarea{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--gold);outline-offset:2px}
 
 /* header */
-header{background:var(--board);color:var(--chalk)}
+header{background:radial-gradient(ellipse at 75% 40%,#1e3b2b 0%,#152c1f 45%,#0f2117 100%);color:var(--chalk)}
 .top{display:flex;align-items:center;gap:10px;padding-block:18px}
-.brand{font-family:var(--f-display);font-size:1.2rem;font-weight:500}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;font-family:"Cinzel",Georgia,serif;font-size:1.05rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.brand img{width:46px;height:46px;border-radius:50%;box-shadow:0 0 0 1px rgba(217,182,113,.4),0 4px 12px rgba(0,0,0,.35)}
 .intro{padding-block:20px 34px;display:grid;gap:14px;max-width:720px}
 .eyebrow{font-size:.74rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#e3c46f}
 .intro h1{font-size:clamp(1.9rem,4.4vw,2.8rem)}
@@ -107,7 +108,7 @@ textarea.hand{font-family:var(--f-hand);font-size:1.2rem;min-height:80px}
 .check small{display:block;color:var(--muted);font-size:.84rem}
 
 /* submit */
-.submit{background:var(--board);color:var(--chalk);border-radius:16px;padding:24px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.submit{background:radial-gradient(ellipse at 30% 0%,#1e3b2b 0%,#152c1f 60%,#0f2117 100%);color:var(--chalk);border-radius:16px;padding:24px 26px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
 .submit p{opacity:.8;font-size:.93rem;max-width:48ch}
 .btn{border:0;border-radius:999px;padding:13px 24px;font-weight:600;cursor:pointer;background:var(--tick);color:#fff;font-size:.98rem}
 .btn:hover{filter:brightness(1.07)}
@@ -156,8 +157,7 @@ textarea.hand{font-family:var(--f-hand);font-size:1.2rem;min-height:80px}
 <header>
   <div class="wrap">
     <div class="top">
-      <svg width="30" height="30" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3.5l4.4 10 10.9 1-8.3 7.2 2.5 10.7L20 26.8l-9.5 5.6 2.5-10.7-8.3-7.2 10.9-1z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 20.5l4.5 4.5L27.5 14" fill="none" stroke="#e05545" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span class="brand">Classroom Legends</span>
+      <a class="brand" href="../"><img src="../logo-160.png" alt="" width="46" height="46">Classroom Legend</a>
     </div>
     <div class="intro">
       <div class="eyebrow">Teacher profile form</div>
