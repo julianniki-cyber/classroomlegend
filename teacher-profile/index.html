@@ -179,7 +179,7 @@ textarea.hand{font-family:var(--f-hand);font-size:1.2rem;min-height:80px}
       <legend><div class="sec-title"><span class="sec-num">1</span><div><h2>About you</h2><div class="ta">உங்களைப் பற்றி</div></div></div></legend>
       <label class="field"><span>Title</span>
         <select id="title" name="title"><option>Mr.</option><option>Mrs.</option><option>Ms.</option><option>Dr.</option><option>Sr.</option><option>Br.</option></select></label>
-      <label class="field"><span>Full name <span class="req">*</span></span><input id="name" name="name" type="text" required placeholder="As you'd like it printed"></label>
+      <label class="field"><span>Full name <span class="req">*</span></span><input id="name" name="name" type="text" required></label>
       <label class="field"><span>Mobile / WhatsApp number <span class="req">*</span></span><input id="phone" name="phone" type="tel" required placeholder="+91 98xxx xxxxx" inputmode="tel"></label>
       <label class="field"><span>Email</span><input id="email" name="email" type="email" placeholder="Optional"></label>
       <label class="field full"><span>Home town</span><input id="hometown" name="hometown" type="text" placeholder="Where you grew up"></label>
@@ -215,7 +215,6 @@ textarea.hand{font-family:var(--f-hand);font-size:1.2rem;min-height:80px}
       <label class="field full"><span>Why did you become a teacher?</span><textarea id="why" name="why"></textarea></label>
       <label class="field full"><span>A moment in your career you'll never forget</span><textarea id="moment" name="moment"></textarea></label>
       <label class="field full"><span>A difficulty you faced, and how you overcame it</span><textarea id="challenge" name="challenge"></textarea></label>
-      <label class="field full"><span>A student whose success makes you proud (no names needed)</span><textarea id="proudStudent" name="proudStudent"></textarea></label>
     </fieldset>
 
     <fieldset id="s-lesson" data-sec="Your lesson">
@@ -226,42 +225,18 @@ textarea.hand{font-family:var(--f-hand);font-size:1.2rem;min-height:80px}
       <label class="field full"><span>Your message to today's students</span><textarea id="message" name="message"></textarea></label>
     </fieldset>
 
-    <fieldset id="s-students" data-sec="Former students">
-      <legend><div class="sec-title"><span class="sec-num">6</span><div><h2>Former students we can talk to</h2><div class="ta">முன்னாள் மாணவர்கள்</div></div></div></legend>
-      <p class="sec-help">Up to three students who could share a memory of you. Please add them only if they're happy to be contacted.</p>
-      <div class="list" id="studentList"></div>
-      <button type="button" class="add" id="addStudent">+ Add a student</button>
-    </fieldset>
-
     <fieldset id="s-photos" data-sec="Photos">
-      <legend><div class="sec-title"><span class="sec-num">7</span><div><h2>Photos</h2><div class="ta">புகைப்படங்கள்</div></div></div></legend>
+      <legend><div class="sec-title"><span class="sec-num">6</span><div><h2>Photos</h2><div class="ta">புகைப்படங்கள்</div></div></div></legend>
       <p class="sec-help">Clear, recent photos work best. Old classroom photos make wonderful "Then &amp; Now" posts.</p>
       <div class="photos" id="photos"></div>
       <div class="note" id="photoNote" hidden>Photo upload isn't available in this view. Please send your photos on WhatsApp to the Classroom Legends team instead.</div>
     </fieldset>
 
-    <fieldset id="s-prefs" data-sec="Preferences">
-      <legend><div class="sec-title"><span class="sec-num">8</span><div><h2>Your preferences</h2><div class="ta">உங்கள் விருப்பங்கள்</div></div></div></legend>
-      <div class="field full"><span>Language for your story</span>
-        <div class="radios"><label><input type="radio" name="lang" value="Tamil">Tamil</label><label><input type="radio" name="lang" value="English">English</label><label><input type="radio" name="lang" value="Both" checked>Both</label></div></div>
-      <div class="field full"><span>Are you comfortable with a short video interview?</span>
-        <div class="radios"><label><input type="radio" name="video" value="Yes" checked>Yes</label><label><input type="radio" name="video" value="Audio only">Audio only</label><label><input type="radio" name="video" value="No">No, written only</label></div></div>
-      <div class="field full"><span>Where would you like to be felicitated?</span>
-        <div class="radios"><label><input type="radio" name="felicitation" value="At my school" checked>At my school</label><label><input type="radio" name="felicitation" value="At home">At home</label><label><input type="radio" name="felicitation" value="Annual awards event">Annual awards event</label></div></div>
-      <div class="field full"><span>If a sponsor offers a gift, who should receive it?</span>
-        <div class="radios"><label><input type="radio" name="gift" value="My school / students" checked>My school or students</label><label><input type="radio" name="gift" value="Me">Me</label><label><input type="radio" name="gift" value="No gift needed">No gift needed</label></div>
-        <small>Government teachers: gifts to your school are usually the simplest choice under service rules.</small></div>
-      <label class="field"><span>Best time to call you</span><input id="callTime" name="callTime" type="text" placeholder="e.g. Weekdays after 5 pm"></label>
-      <label class="field"><span>Anything we should know?</span><input id="notes" name="notes" type="text" placeholder="Optional"></label>
-    </fieldset>
-
     <fieldset id="s-consent" data-sec="Consent">
-      <legend><div class="sec-title"><span class="sec-num">9</span><div><h2>Your consent</h2><div class="ta">ஒப்புதல்</div></div></div></legend>
+      <legend><div class="sec-title"><span class="sec-num">7</span><div><h2>Your consent</h2><div class="ta">ஒப்புதல்</div></div></div></legend>
       <div class="checks">
         <label class="check"><input type="checkbox" id="c-story" name="c_story" required><span><b>Publish my story <span style="color:var(--tick)">*</span></b><small>Classroom Legends may publish my story on its website, Instagram and Facebook after I review it.</small></span></label>
         <label class="check"><input type="checkbox" id="c-photos" name="c_photos"><span><b>Use my photos</b><small>The photos I share may be used in my tribute.</small></span></label>
-        <label class="check"><input type="checkbox" id="c-video" name="c_video"><span><b>Record and share video</b><small>A video interview may be recorded and shared as Reels.</small></span></label>
-        <label class="check"><input type="checkbox" id="c-students" name="c_students"><span><b>Contact my former students</b><small>The team may contact the students I listed, who have agreed to be contacted.</small></span></label>
         <label class="check"><input type="checkbox" id="c-sponsor" name="c_sponsor"><span><b>Sponsor line</b><small>I understand a "Supported by" sponsor name may appear on my tribute, and that this does not mean I endorse that business.</small></span></label>
       </div>
       <label class="field"><span>Type your full name as signature <span class="req">*</span></span><input id="signature" name="signature" type="text" required></label>
@@ -298,28 +273,17 @@ $("#rail").innerHTML=$$("fieldset").map((f,i)=>`<a href="#${f.id}" data-for="${f
 $("#dateOut").innerHTML=`Date: <b style="font-size:1rem">${new Date().toLocaleDateString("en-IN",{day:"numeric",month:"long",year:"numeric"})}</b>`;
 
 /* ---- repeaters ---- */
-let prides=[""], studs=[{name:"",role:"",phone:""}], photos={};
+let prides=[""], photos={};
 function drawPrides(){
   $("#prideList").innerHTML=prides.map((p,i)=>`<div class="row"><span class="n">${i+1}</span><input type="text" id="pride-${i}" data-pride="${i}" value="${esc(p)}" placeholder="e.g. Ran free evening classes for 20 years" aria-label="Pride ${i+1}">${prides.length>1?`<button type="button" class="icon-btn" data-delpride="${i}" aria-label="Remove pride ${i+1}">×</button>`:"<span></span>"}</div>`).join("");
   $("#addPride").disabled=prides.length>=MAX_PRIDES;
 }
-function drawStudents(){
-  $("#studentList").innerHTML=studs.map((s,i)=>`<div class="student">
-    <label class="field"><span>Name</span><input type="text" id="st-name-${i}" data-st="${i}" data-k="name" value="${esc(s.name)}"></label>
-    <label class="field"><span>What they do now</span><input type="text" id="st-role-${i}" data-st="${i}" data-k="role" value="${esc(s.role)}" placeholder="e.g. Doctor, Chennai"></label>
-    <label class="field"><span>Phone</span><input type="tel" id="st-phone-${i}" data-st="${i}" data-k="phone" value="${esc(s.phone)}"></label>
-    ${studs.length>1?`<button type="button" class="icon-btn" data-delst="${i}" aria-label="Remove student ${i+1}">×</button>`:"<span></span>"}</div>`).join("");
-  $("#addStudent").disabled=studs.length>=MAX_STUDENTS;
-}
 $("#addPride").onclick=()=>{if(prides.length<MAX_PRIDES){prides.push("");drawPrides();$(`#pride-${prides.length-1}`).focus();save();}};
-$("#addStudent").onclick=()=>{if(studs.length<MAX_STUDENTS){studs.push({name:"",role:"",phone:""});drawStudents();save();}};
 document.addEventListener("click",e=>{
   const dp=e.target.closest("[data-delpride]"); if(dp){prides.splice(+dp.dataset.delpride,1);drawPrides();save();}
-  const ds=e.target.closest("[data-delst]"); if(ds){studs.splice(+ds.dataset.delst,1);drawStudents();save();}
 });
 document.addEventListener("input",e=>{
   if(e.target.dataset.pride!==undefined) prides[+e.target.dataset.pride]=e.target.value;
-  if(e.target.dataset.st!==undefined) studs[+e.target.dataset.st][e.target.dataset.k]=e.target.value;
 });
 
 /* ---- photos ---- */
@@ -356,9 +320,8 @@ $("#startYear").addEventListener("input",syncYears);$("#endYear").addEventListen
 function collect(){
   const fd=new FormData($("#f")), o={};
   for(const [k,v] of fd.entries()) if(typeof v==="string") o[k]=v.trim();
-  ["c_story","c_photos","c_video","c_students","c_sponsor"].forEach(k=>o[k]=!!$(`[name="${k}"]`).checked);
+  ["c_story","c_photos","c_sponsor"].forEach(k=>o[k]=!!$(`[name="${k}"]`).checked);
   o.prides=prides.map(p=>p.trim()).filter(Boolean);
-  o.students=studs.filter(s=>s.name.trim()||s.phone.trim()).map(s=>({name:s.name.trim(),role:s.role.trim(),phone:s.phone.trim()}));
   o.photos=Object.fromEntries(Object.entries(photos).filter(([,p])=>p.id).map(([k,p])=>[k,{id:p.id,url:p.url}]));
   if(o.status!=="Retired") o.endYear="";
   return o;
@@ -376,16 +339,15 @@ function load(){
     els.forEach(el=>{ if(el.type==="radio") el.checked=el.value===v; else if(el.type==="checkbox") el.checked=!!v; else el.value=v; });
   });
   if(d.prides?.length) prides=d.prides;
-  if(d.students?.length) studs=d.students;
   if(d.photosState) photos=d.photosState;
 }
 const REQ=["name","phone","school","town","district","subject","startYear","lesson","signature"];
 function progress(){
   const d=collect();
-  const checks=[...REQ.map(k=>!!d[k]),d.c_story,d.prides.length>0,!!(d.why||d.moment),d.students.length>0,Object.keys(d.photos).length>0||!assetsApi];
+  const checks=[...REQ.map(k=>!!d[k]),d.c_story,d.prides.length>0,!!(d.why||d.moment),Object.keys(d.photos).length>0||!assetsApi];
   const pct=Math.round(checks.filter(Boolean).length/checks.length*100);
   $("#barFill").style.width=pct+"%";$("#barPct").textContent=pct+"%";
-  const done={ "s-about":!!(d.name&&d.phone),"s-journey":!!(d.school&&d.town&&d.district&&d.subject&&d.startYear),"s-prides":d.prides.length>0,"s-story":!!(d.why||d.moment||d.challenge),"s-lesson":!!d.lesson,"s-students":d.students.length>0,"s-photos":Object.keys(d.photos).length>0,"s-prefs":true,"s-consent":!!(d.c_story&&d.signature)};
+  const done={ "s-about":!!(d.name&&d.phone),"s-journey":!!(d.school&&d.town&&d.district&&d.subject&&d.startYear),"s-prides":d.prides.length>0,"s-story":!!(d.why||d.moment||d.challenge),"s-lesson":!!d.lesson,"s-photos":Object.keys(d.photos).length>0,"s-consent":!!(d.c_story&&d.signature)};
   $$("#rail a").forEach(a=>a.classList.toggle("done",!!done[a.dataset.for]));
 }
 $("#f").addEventListener("input",()=>{clearTimeout(window._t);window._t=setTimeout(save,400);});
@@ -395,10 +357,9 @@ function asText(d){
   const L=[`CLASSROOM LEGENDS: TEACHER PROFILE`,``,`${d.title} ${d.name}`,`Phone: ${d.phone}${d.email?` · Email: ${d.email}`:""}`,`Home town: ${d.hometown||"-"}`,``,
   `Status: ${d.status}`,`School: ${d.school}, ${d.town}, ${d.district}`,`Subject: ${d.subject}`,`Years: ${d.startYear}–${d.endYear||"present"}`,`Classes: ${d.classes||"-"} · Students taught: ${d.students_count||d.studentsTaught||$("#students").value||"-"}`,
   `Other schools: ${d.otherSchools||"-"}`,``,`PRIDES`,...d.prides.map((p,i)=>`${i+1}. ${p}`),`Awards: ${d.awards||"-"}`,``,
-  `Why I became a teacher: ${d.why||"-"}`,`Unforgettable moment: ${d.moment||"-"}`,`Difficulty overcome: ${d.challenge||"-"}`,`Proud student: ${d.proudStudent||"-"}`,``,
-  `LESSON: "${d.lesson}"`,`Message to students: ${d.message||"-"}`,``,`FORMER STUDENTS`,...(d.students.length?d.students.map(s=>`- ${s.name} (${s.role||"-"}) ${s.phone}`):["-"]),``,
-  `Language: ${d.lang} · Video: ${d.video} · Felicitation: ${d.felicitation} · Gift: ${d.gift}`,`Call time: ${d.callTime||"-"} · Notes: ${d.notes||"-"}`,``,
-  `Consent: story ${d.c_story?"✓":"✗"}, photos ${d.c_photos?"✓":"✗"}, video ${d.c_video?"✓":"✗"}, students ${d.c_students?"✓":"✗"}, sponsor line ${d.c_sponsor?"✓":"✗"}`,`Signed: ${d.signature} · ${new Date().toLocaleDateString("en-IN")}`];
+  `Why I became a teacher: ${d.why||"-"}`,`Unforgettable moment: ${d.moment||"-"}`,`Difficulty overcome: ${d.challenge||"-"}`,``,
+  `LESSON: "${d.lesson}"`,`Message to students: ${d.message||"-"}`,``,
+  `Consent: story ${d.c_story?"✓":"✗"}, photos ${d.c_photos?"✓":"✗"}, sponsor line ${d.c_sponsor?"✓":"✗"}`,`Signed: ${d.signature} · ${new Date().toLocaleDateString("en-IN")}`];
   return L.join("\n");
 }
 
@@ -411,7 +372,7 @@ $("#f").addEventListener("submit",async e=>{
   const d=collect(), missing=[];
   REQ.forEach(k=>{if(!d[k]){missing.push(k);$(`#${k}`)?.classList.add("invalid");}});
   if(!d.c_story){missing.push("consent");$("#c-story").closest(".check").classList.add("invalid");}
-  if(missing.length){showMsg("err",`<h3>A few details are missing</h3><p>Please fill the fields marked in red, and tick "Publish my story" in section 9.</p>`);$(".invalid")?.focus();return;}
+  if(missing.length){showMsg("err",`<h3>A few details are missing</h3><p>Please fill the fields marked in red, and tick "Publish my story" in section 7.</p>`);$(".invalid")?.focus();return;}
   d.studentsTaught=$("#students").value;
   const btn=$("#submitBtn");btn.disabled=true;btn.textContent="Submitting…";
   let saved=false;
@@ -420,7 +381,7 @@ $("#f").addEventListener("submit",async e=>{
   }
   btn.disabled=false;btn.textContent="Update my profile";
   if(saved){
-    showMsg("ok",`<h3>Thank you, ${esc(d.title)} ${esc(d.name)}</h3><p>Your profile has reached the Classroom Legends team. We'll call you${d.callTime?` (${esc(d.callTime)})`:""} to talk about your story. You can come back and update this form anytime.</p>`);
+    showMsg("ok",`<h3>Thank you, ${esc(d.title)} ${esc(d.name)}</h3><p>Your profile has reached the Classroom Legends team. We'll call you to talk about your story. You can come back and update this form anytime.</p>`);
   }else{
     showMsg("ok",`<h3>Almost done: please send us your details</h3><p>This view can't send the form directly. Copy your details below and send them to the Classroom Legends team on WhatsApp.</p><pre id="copyText">${esc(asText(d))}</pre><div class="actions"><button type="button" class="btn" id="copyBtn">Copy my details</button></div>`);
     $("#copyBtn").onclick=async ev=>{try{await navigator.clipboard.writeText(asText(d));ev.target.textContent="Copied. Paste it in WhatsApp";}catch{const r=document.createRange();r.selectNodeContents($("#copyText"));const s=getSelection();s.removeAllRanges();s.addRange(r);ev.target.textContent="Text selected. Copy it manually";}};
@@ -435,15 +396,14 @@ function drawInbox(docs){
   $("#inboxList").innerHTML=docs.map(d=>{
     const ph=Object.values(d.photos||{});
     const rows=[["Phone",d.phone],["Email",d.email],["School",`${d.school}, ${d.town}, ${d.district}`],["Subject",d.subject],["Years",`${d.startYear}–${d.endYear||"present"} (${d.status})`],["Classes",d.classes],["Students taught",d.studentsTaught],["Other schools",d.otherSchools],
-      ["Prides",(d.prides||[]).map((p,i)=>`${i+1}. ${p}`).join("\n")],["Awards",d.awards],["Why teaching",d.why],["Unforgettable moment",d.moment],["Difficulty overcome",d.challenge],["Proud student",d.proudStudent],["Lesson",d.lesson],["Message",d.message],
-      ["Former students",(d.students||[]).map(s=>`${s.name} (${s.role||"-"}) ${s.phone}`).join("\n")],["Preferences",`Language: ${d.lang} · Video: ${d.video} · Felicitation: ${d.felicitation} · Gift: ${d.gift}`],["Call time",d.callTime],["Notes",d.notes],
-      ["Consent",`Story ${d.c_story?"✓":"✗"} · Photos ${d.c_photos?"✓":"✗"} · Video ${d.c_video?"✓":"✗"} · Students ${d.c_students?"✓":"✗"} · Sponsor ${d.c_sponsor?"✓":"✗"}`],["Signed",d.signature]].filter(r=>r[1]);
+      ["Prides",(d.prides||[]).map((p,i)=>`${i+1}. ${p}`).join("\n")],["Awards",d.awards],["Why teaching",d.why],["Unforgettable moment",d.moment],["Difficulty overcome",d.challenge],["Lesson",d.lesson],["Message",d.message],
+      ["Consent",`Story ${d.c_story?"✓":"✗"} · Photos ${d.c_photos?"✓":"✗"} · Sponsor ${d.c_sponsor?"✓":"✗"}`],["Signed",d.signature]].filter(r=>r[1]);
     return `<details class="sub"><summary><b>${esc(d.title)} ${esc(d.name)}</b><span>${esc(d.subject)} · ${esc(d.town)}, ${esc(d.district)}</span><span>${d.submittedAt?new Date(d.submittedAt).toLocaleDateString("en-IN",{day:"numeric",month:"short"}):""}</span></summary>
       <div class="body">${ph.length?`<div class="thumbs">${ph.map(p=>`<img src="${esc(p.url||"/_blob/"+p.id)}" alt="">`).join("")}</div>`:""}<dl>${rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl></div></details>`;}).join("");
 }
 
 /* ---- boot ---- */
-load();drawPrides();drawStudents();drawPhotos();syncYears();progress();
+load();drawPrides();drawPhotos();syncYears();progress();
 (async()=>{
   if(!window.claude?.use){$("#photoNote").hidden=false;$("#photos").hidden=true;return;}
   const [d,u,a]=await Promise.all([claude.use("db"),claude.use("user"),claude.use("assets")]);
